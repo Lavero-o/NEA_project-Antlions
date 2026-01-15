@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciyumyfbtch8m"]
+
+[ext_resource type="Script" uid="uid://dbp6oggi7cukv" path="res://Scripts/world.gd" id="1_a02cp"]
+[ext_resource type="Texture2D" uid="uid://3es72f11p0qq" path="res://Assets/TerrainTiles.png" id="1_go701"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a7ea"]
+texture = ExtResource("1_go701")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8j60k"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetAtlasSource_5a7ea")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a02cp"]
+frequency = 0.011
+
+[sub_resource type="Gradient" id="Gradient_go701"]
+offsets = PackedFloat32Array(0, 0.55333334, 0.91333336)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5a7ea"]
+gradient = SubResource("Gradient_go701")
+width = 1
+height = 1
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="World" type="TileMapLayer"]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_8j60k")
+script = ExtResource("1_a02cp")
+world_noise = SubResource("FastNoiseLite_a02cp")
+end_vinette = SubResource("GradientTexture2D_5a7ea")
