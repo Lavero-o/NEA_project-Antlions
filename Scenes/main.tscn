@@ -8,6 +8,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_jjgbg")]
+physics_quadrant_size = 32
 
 [node name="CameraChar" type="CharacterBody2D" parent="."]
 motion_mode = 1
