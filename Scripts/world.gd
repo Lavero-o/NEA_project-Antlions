@@ -17,8 +17,8 @@ var noise_thresholds = {
 	'grass': 1
 }
 
-@export var world_width = 500
-@export var world_height = 500
+@export var world_width = 250
+@export var world_height = 250
 
 @export var world_noise: FastNoiseLite
 @export var end_vinette: GradientTexture2D
