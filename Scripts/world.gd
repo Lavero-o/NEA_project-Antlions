@@ -17,14 +17,16 @@ var noise_thresholds = {
 	'grass': 1
 }
 
-@export var world_width = 500
-@export var world_height = 500
+@export var world_width = 250
+@export var world_height = 250
 
 @export var world_noise: FastNoiseLite
 @export var end_vinette: GradientTexture2D
 
 var noise_image: Image
 var end_gradient: Image
+
+var used_rect: Rect2
 
 func _ready() -> void:
 	world_noise.seed = randi()
@@ -55,9 +57,12 @@ func gen_world() -> void:
 			var tile = get_tile_on_noise(noise)
 			var tile_atlas_cord = tile_atlas[tile]
 			set_cell(Vector2i(tile_x, tile_y), 0, tile_atlas_cord)
+	
+	used_rect = get_used_rect()
 
 func is_land(cell_pos: Vector2):
 	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
