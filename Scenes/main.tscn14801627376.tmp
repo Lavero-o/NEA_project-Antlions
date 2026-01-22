@@ -13,8 +13,7 @@ size = Vector2(26, 26)
 
 [node name="Main" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_jjgbg")]
-scale = Vector2(12, 12)
+[node name="WorldLayer" parent="." instance=ExtResource("1_jjgbg")]
 
 [node name="Entities" type="Node2D" parent="."]
 
@@ -27,7 +26,7 @@ texture = ExtResource("2_6bp64")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TestEntity"]
 shape = SubResource("RectangleShape2D_344ge")
 
-[node name="Test_mouse_pointer" type="Node" parent="Entities/TestEntity" node_paths=PackedStringArray("entity", "camera")]
+[node name="Node" type="Node" parent="Entities/TestEntity" node_paths=PackedStringArray("entity", "camera")]
 script = ExtResource("4_6bp64")
 entity = NodePath("..")
 camera = NodePath("../../../CameraChar/Camera2D")

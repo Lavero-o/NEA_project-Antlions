@@ -15,18 +15,29 @@ func _init() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if is_moving_to_point:
-		var move_vector = get_move_vector()
-		velocity = move_vector * speed * 10 * delta
-	
-	velocity.x = move_toward(velocity.x, 0, 10*delta)
-	velocity.y = move_toward(velocity.y, 0, 10*delta)
+	_calculate_moving(delta)
+	move_and_slide()
 
-func get_move_vector():
+func get_move_vector() -> Vector2:
 	if not is_moving_to_point:
-		return
+		pass
 	return (moving_to - position).normalized()
 
-func move_to(point: Vector2):
+func _calculate_moving(delta: float) -> void:
+	if is_moving_to_point:
+		var move_vector = get_move_vector()
+		velocity = move_vector * speed * 10
+		if velocity.length() * delta > _get_moving_point_vector().length():
+			position = moving_to
+			velocity = Vector2.ZERO
+			print("ended moving to:", moving_to)
+	else:
+		velocity = Vector2.ZERO
+
+func _get_moving_point_vector() -> Vector2:
+	return moving_to - position
+
+func move_to(point: Vector2) -> void:
 	is_moving_to_point = true
 	moving_to = point
+	print("started moving towards:",moving_to)

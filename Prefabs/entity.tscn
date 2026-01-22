@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://entity.gd" id="1_4cnbd"]
 
 [node name="Entity" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_4cnbd")
