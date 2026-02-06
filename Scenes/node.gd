@@ -4,7 +4,7 @@ extends Node
 @export var camera: Camera2D
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() == true:
+	if event is InputEventMouseButton and event.is_pressed() == true and event.as_text() == "Left Mouse Button":
 		entity.move_to(_get_mouse_pos())
 
 func _get_mouse_pos() -> Vector2:

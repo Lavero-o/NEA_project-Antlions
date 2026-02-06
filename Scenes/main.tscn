@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqulnxu21jm7k"]
+[gd_scene format=3 uid="uid://dqulnxu21jm7k"]
 
 [ext_resource type="PackedScene" uid="uid://boye7g5fxn4jq" path="res://Prefabs/entity.tscn" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ciyumyfbtch8m" path="res://Scenes/world.tscn" id="1_jjgbg"]
@@ -11,34 +11,36 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(26, 26)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1700748744]
 
-[node name="World" parent="." instance=ExtResource("1_jjgbg")]
+[node name="World" parent="." unique_id=1574510773 instance=ExtResource("1_jjgbg")]
 scale = Vector2(12, 12)
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="." unique_id=1014762199]
 
-[node name="TestEntity" parent="Entities" instance=ExtResource("1_21xkr")]
+[node name="TestEntity" parent="Entities" unique_id=411814730 instance=ExtResource("1_21xkr")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TestEntity"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TestEntity" unique_id=1999650845]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_6bp64")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TestEntity"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TestEntity" unique_id=1038147285]
 shape = SubResource("RectangleShape2D_344ge")
 
-[node name="Test_mouse_pointer" type="Node" parent="Entities/TestEntity" node_paths=PackedStringArray("entity", "camera")]
+[node name="Test_mouse_pointer" type="Node" parent="Entities/TestEntity" unique_id=1506423665 node_paths=PackedStringArray("entity", "camera")]
 script = ExtResource("4_6bp64")
 entity = NodePath("..")
 camera = NodePath("../../../CameraChar/Camera2D")
 
-[node name="CameraChar" type="CharacterBody2D" parent="."]
+[node name="CameraChar" type="CharacterBody2D" parent="." unique_id=1054948196 node_paths=PackedStringArray("camera")]
 motion_mode = 1
 script = ExtResource("2_jjvhh")
+camera = NodePath("Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="CameraChar"]
+[node name="Camera2D" type="Camera2D" parent="CameraChar" unique_id=1993130692]
+zoom = Vector2(2, 2)
 script = ExtResource("3_kry3j")
 
-[node name="ControlNode" type="Node" parent="CameraChar" node_paths=PackedStringArray("player")]
+[node name="ControlNode" type="Node" parent="CameraChar" unique_id=1388406024 node_paths=PackedStringArray("player")]
 script = ExtResource("4_21xkr")
 player = NodePath("..")
