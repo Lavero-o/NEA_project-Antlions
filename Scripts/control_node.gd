@@ -12,8 +12,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo():
 		return
 	
-	print("Inbound input ", test_count)
-	test_count += 1
 	handle_movement_input(event)
 	
 	handle_zoom_input(event)

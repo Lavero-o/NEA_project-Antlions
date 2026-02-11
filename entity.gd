@@ -30,7 +30,7 @@ func _calculate_moving(delta: float) -> void:
 		if velocity.length() * delta > _get_moving_point_vector().length():
 			position = moving_to
 			velocity = Vector2.ZERO
-			print("ended moving to:", moving_to)
+			#print("ended moving to:", moving_to)
 	else:
 		velocity = Vector2.ZERO
 
@@ -40,4 +40,4 @@ func _get_moving_point_vector() -> Vector2:
 func move_to(point: Vector2) -> void:
 	is_moving_to_point = true
 	moving_to = point
-	print("started moving towards:",moving_to)
+	#print("started moving towards:",moving_to)

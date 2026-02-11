@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://boye7g5fxn4jq" path="res://Prefabs/entity.tscn" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ciyumyfbtch8m" path="res://Scenes/world.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="2_6bp64"]
-[ext_resource type="Script" uid="uid://da8p8lunlgpwx" path="res://Scenes/character_body_2d.gd" id="2_jjvhh"]
-[ext_resource type="Script" uid="uid://codm7bn8fqj3v" path="res://Scenes/camera_2d.gd" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scenes/node.gd" id="4_6bp64"]
+[ext_resource type="Script" uid="uid://da8p8lunlgpwx" path="res://Scripts/character_body_2d.gd" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://codm7bn8fqj3v" path="res://Scripts/camera_2d.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scripts/node.gd" id="4_6bp64"]
 [ext_resource type="Script" uid="uid://dos051svvodfj" path="res://Scripts/control_node.gd" id="4_21xkr"]
-[ext_resource type="Script" uid="uid://b7r650ylsqej0" path="res://Scenes/entity_control.gd" id="8_344ge"]
-[ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scenes/entity_selection.gd" id="9_ynf5e"]
+[ext_resource type="Script" uid="uid://b7r650ylsqej0" path="res://Scripts/entity_control.gd" id="8_344ge"]
+[ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scripts/entity_selection.gd" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://c7p1bp5526eom" path="res://Scenes/select_rect.tscn" id="10_hptm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(26, 26)
@@ -31,6 +32,7 @@ shape = SubResource("RectangleShape2D_344ge")
 
 [node name="Test_mouse_pointer" type="Node" parent="Entities/TestEntity" unique_id=1506423665 node_paths=PackedStringArray("entity", "camera")]
 script = ExtResource("4_6bp64")
+enabled = false
 entity = NodePath("..")
 camera = NodePath("../../../CameraChar/Camera2D")
 
@@ -50,5 +52,9 @@ player = NodePath("..")
 [node name="EntityControl" type="Node" parent="CameraChar" unique_id=1136106208]
 script = ExtResource("8_344ge")
 
-[node name="EntitySelection" type="Node" parent="CameraChar/EntityControl" unique_id=188448409]
+[node name="EntitySelection" type="Node" parent="CameraChar/EntityControl" unique_id=188448409 node_paths=PackedStringArray("canvas")]
 script = ExtResource("9_ynf5e")
+canvas = NodePath("../../../CanvasLayer")
+selection_rect_scene = ExtResource("10_hptm8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1986374862]
