@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scenes/node.gd" id="4_6bp64"]
 [ext_resource type="Script" uid="uid://dos051svvodfj" path="res://Scripts/control_node.gd" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://b7r650ylsqej0" path="res://Scenes/entity_control.gd" id="8_344ge"]
+[ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scenes/entity_selection.gd" id="9_ynf5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(26, 26)
@@ -48,3 +49,6 @@ player = NodePath("..")
 
 [node name="EntityControl" type="Node" parent="CameraChar" unique_id=1136106208]
 script = ExtResource("8_344ge")
+
+[node name="EntitySelection" type="Node" parent="CameraChar/EntityControl" unique_id=188448409]
+script = ExtResource("9_ynf5e")
