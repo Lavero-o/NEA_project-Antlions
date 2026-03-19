@@ -3,9 +3,12 @@ extends Node
 @export var enabled: bool = true
 
 @export var entity: Entity
-@export var camera: Camera2D
+var camera: Camera2D
 
 func _input(event: InputEvent) -> void:
+	print(Enums.entity.a)
+	if not camera:
+		camera = Globals.get_camera()
 	if not enabled:
 		return
 	if event is InputEventMouseButton and event.is_pressed() == true and event.as_text() == "Left Mouse Button":

@@ -1,10 +1,11 @@
-class_name Player
 extends CharacterBody2D
+
+class_name Player
 
 
 @export var camera: Camera2D
 
-const  BASE_SPEED: float = 500.0
+const BASE_SPEED: float = 500.0
 const BASE_ACCEL: float = 1000.0
 var speed_mult: float = 1.0
 var speed: float = BASE_SPEED * speed_mult
@@ -26,10 +27,11 @@ func _physics_process(delta: float) -> void:
 	if move_vector.length() != 0:
 		velocity.x = move_toward(velocity.x, move_vector.x*speed, delta*accel*5)
 		velocity.y = move_toward(velocity.y, move_vector.y*speed, delta*accel*5)
+		#print(velocity, speed, delta, accel)
 	else:
+		#print('stop')
 		velocity.x = move_toward(velocity.x, 0, delta*accel)
 		velocity.y = move_toward(velocity.y, 0, delta*accel)
-
 
 
 func zoom_in(percent_amount: float) -> void:
