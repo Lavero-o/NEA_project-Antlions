@@ -2,10 +2,17 @@ extends Node
 
 class_name Enums
 
+enum action {
+	MOVE,
+	GRAB,
+	ATTACK,
+	BUILD,
+	DEFEND,
+	REPAIR
+}
 
 
-
-enum entity_ {
+enum entity {
 	ANT,
 	QUEEN_ANT,
 	FIGHTER_ANT,

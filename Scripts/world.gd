@@ -35,6 +35,12 @@ func _ready() -> void:
 	end_vinette.height = world_height
 	end_gradient = end_vinette.get_image()
 	gen_world()
+	#
+	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
+	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
+	$"../Entities/TestEntity".position = pos
+	print(pos)
+	#
 
 func get_tile_on_noise(noise_val) -> String:
 	var tile_to_return = ''

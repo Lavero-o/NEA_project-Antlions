@@ -5,13 +5,17 @@ extends Node
 @export var entity: Entity
 var camera: Camera2D
 
+func _ready() -> void:
+	pass
+
 func _input(event: InputEvent) -> void:
-	print(Enums.entity.a)
 	if not camera:
 		camera = Globals.get_camera()
 	if not enabled:
 		return
-	if event is InputEventMouseButton and event.is_pressed() == true and event.as_text() == "Left Mouse Button":
+	
+	#print(event is InputEventMouseButton, event.is_pressed(), event.as_text() == "Left Mouse Button")
+	if event is InputEventMouseButton and event.is_pressed() and event.as_text() == "Left Mouse Button":
 		entity.move_to(_get_mouse_pos())
 
 func _get_mouse_pos() -> Vector2:

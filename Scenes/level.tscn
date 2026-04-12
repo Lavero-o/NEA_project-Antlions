@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scripts/entity_selection.gd" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c7p1bp5526eom" path="res://Scenes/select_rect.tscn" id="10_hptm8"]
 
-[node name="Main" type="Node2D" unique_id=1700748744]
+[node name="Level" type="Node2D" unique_id=1700748744]
 
 [node name="World" parent="." unique_id=1574510773 instance=ExtResource("1_jjgbg")]
 scale = Vector2(12, 12)

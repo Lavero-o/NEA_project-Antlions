@@ -1,8 +1,11 @@
 extends CharacterBody2D
 class_name Entity
 
+@export_category('Movement')
 @export var health: float = 60
 @export var speed: float = 20
+@export_category('Variables')
+@export var stationary: bool = false
 
 var friction = 10
 
@@ -11,12 +14,23 @@ var is_moving_to_point: bool
 
 var turn_factor: float = 0.1
 
+var actions = []
+var allowed_actions = []
+var item_held: Entity
+
 func _init() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	_calculate_moving(delta)
 	move_and_slide()
+
+
+func add_action(action):
+	if action.enum not in allowed_actions:
+		return
+	actions.append(action)
+
 
 func get_move_vector() -> Vector2:
 	if not is_moving_to_point:
@@ -36,6 +50,23 @@ func _calculate_moving(delta: float) -> void:
 
 func _get_moving_point_vector() -> Vector2:
 	return moving_to - position
+
+func drop_item():
+	if not item_held:
+		return false
+	
+	#functionality here !!
+	
+	item_held = null
+	return true
+
+func grab(item):
+	if item_held:
+		drop_item()
+	
+	#functionality here !!
+	
+	item_held = item
 
 func move_to(point: Vector2) -> void:
 	is_moving_to_point = true
