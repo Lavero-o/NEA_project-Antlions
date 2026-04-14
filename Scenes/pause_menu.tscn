@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bvf7xn324a2dr"]
+
+[ext_resource type="Script" uid="uid://dtd5e11k6nnwe" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="PackedScene" uid="uid://ds0be0wem4xg8" path="res://Scenes/options_menu.tscn" id="2_1och7"]
+[ext_resource type="PackedScene" uid="uid://ch514mk60rq2w" path="res://Scenes/main_menu.tscn" id="3_bpi0q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ptvp"]
+font_size = 24
+
+[node name="PauseMenu" type="Control" unique_id=1770252000]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emv3i")
+options_ui_scene = ExtResource("2_1och7")
+main_menu_scene = ExtResource("3_bpi0q")
+
+[node name="DarkBG" type="ColorRect" parent="." unique_id=1669200131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3019608)
+
+[node name="PanelContainer" type="PanelContainer" parent="DarkBG" unique_id=752717827]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DarkBG/PanelContainer" unique_id=795767612]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DarkBG/PanelContainer/MarginContainer" unique_id=1256352982]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="OptionsLabel" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer" unique_id=474150222]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_7ptvp")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer" unique_id=1248995322]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ContinueButton" type="Button" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1530785419]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1889645952]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Options"
+
+[node name="SaveButton" type="Button" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=335194289]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Save"
+
+[node name="ExitButton" type="Button" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1491576784]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Save & Exit"
+
+[node name="CloseButton" type="Button" parent="DarkBG/PanelContainer" unique_id=839884724]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="DarkBG/PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]

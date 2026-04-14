@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6t3juv338y3k"]
 
 [ext_resource type="PackedScene" uid="uid://boye7g5fxn4jq" path="res://Prefabs/Fundamentals/entity.tscn" id="1_l2adr"]
+[ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://Scripts/entity.gd" id="2_l2adr"]
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="3_ub77q"]
 [ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scripts/entity_move_mouse_input.gd" id="4_32b4g"]
 
@@ -8,6 +9,7 @@
 size = Vector2(26, 26)
 
 [node name="TestEntity" unique_id=673517539 instance=ExtResource("1_l2adr")]
+script = ExtResource("2_l2adr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1738517534]
 scale = Vector2(0.25, 0.25)
