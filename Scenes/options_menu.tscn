@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://ds0be0wem4xg8"]
+
+[ext_resource type="Script" uid="uid://bripi03hy4ioh" path="res://Scripts/options_menu.gd" id="1_plplt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ptvp"]
+font_size = 24
+
+[node name="OptionsMenu" type="Control" unique_id=1770252000]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plplt")
+
+[node name="DarkBG" type="ColorRect" parent="." unique_id=1669200131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3019608)
+
+[node name="PanelContainer" type="PanelContainer" parent="DarkBG" unique_id=752717827]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DarkBG/PanelContainer" unique_id=795767612]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DarkBG/PanelContainer/MarginContainer" unique_id=1256352982]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="OptionsLabel" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer" unique_id=474150222]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_7ptvp")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer" unique_id=1248995322]
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=906323916]
+layout_mode = 2
+text = "DISPLAY"
+horizontal_alignment = 1
+
+[node name="Resolition" type="HBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=379608163]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Resolition" unique_id=350211881]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Resolition" unique_id=356623597]
+layout_mode = 2
+size_flags_horizontal = 8
+item_count = 3
+popup/item_0/text = "2560x1440"
+popup/item_0/id = 2
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 0
+popup/item_2/text = "1280x720"
+popup/item_2/id = 1
+
+[node name="Scale" type="HBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1858375286]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Scale" unique_id=981341847]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scale"
+
+[node name="OptionButton" type="OptionButton" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Scale" unique_id=812426519]
+layout_mode = 2
+size_flags_horizontal = 8
+item_count = 5
+popup/item_0/text = "2.0"
+popup/item_0/id = 0
+popup/item_1/text = "1.5"
+popup/item_1/id = 1
+popup/item_2/text = "1.0"
+popup/item_2/id = 2
+popup/item_3/text = "0.75"
+popup/item_3/id = 3
+popup/item_4/text = "0.5"
+popup/item_4/id = 4
+
+[node name="VolumeLabel" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1529966367]
+layout_mode = 2
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1531244605]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master" unique_id=1161413078]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master" unique_id=767926874]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Sounds" type="HBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1911007974]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Sounds" unique_id=1433323267]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sounds"
+
+[node name="HSlider" type="HSlider" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Sounds" unique_id=1945071712]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Music" type="HBoxContainer" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=872624460]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music" unique_id=1033257623]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music" unique_id=856738210]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="CloseButton" type="Button" parent="DarkBG/PanelContainer" unique_id=839884724]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[connection signal="pressed" from="DarkBG/PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]

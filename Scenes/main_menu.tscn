@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://ch514mk60rq2w"]
 
+[ext_resource type="Script" uid="uid://cffm065w4xard" path="res://Scripts/title_buttons.gd" id="1_48xlc"]
+[ext_resource type="PackedScene" uid="uid://cp11gxddvld2q" path="res://Scenes/level_menu.tscn" id="2_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://ds0be0wem4xg8" path="res://Scenes/options_menu.tscn" id="3_1ehe0"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_erv1k"]
 font_size = 60
 
@@ -7,7 +11,7 @@ font_size = 60
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321049447]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1151938858]
+[node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=1151938858]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1133973511]
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/TitleMenu" unique_id=1133973511]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -26,11 +30,11 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer3" unique_id=312075802]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TitleMenu/MarginContainer3" unique_id=312075802]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="TitleLable" type="Label" parent="CanvasLayer/Control/MarginContainer3/VBoxContainer" unique_id=144672748]
+[node name="TitleLable" type="Label" parent="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer" unique_id=144672748]
 layout_mode = 2
 size_flags_vertical = 1
 text = "ANTLIONS"
@@ -38,23 +42,31 @@ label_settings = SubResource("LabelSettings_erv1k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer3/VBoxContainer" unique_id=1306286949]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer" unique_id=1306286949 node_paths=PackedStringArray("canvas_node")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 alignment = 1
+script = ExtResource("1_48xlc")
+canvas_node = NodePath("../../../..")
+level_ui_scene = ExtResource("2_1ehe0")
+options_ui_scene = ExtResource("3_1ehe0")
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1045588746]
+[node name="PlayButton" type="Button" parent="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1045588746]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "PLAY"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/Control/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1709544746]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1709544746]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "OPTIONS"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1194339343]
+[node name="QuitButton" type="Button" parent="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" unique_id=1194339343]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "QUIT"
+
+[connection signal="pressed" from="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer/PlayButton" to="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer/OptionsButton" to="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer/QuitButton" to="CanvasLayer/TitleMenu/MarginContainer3/VBoxContainer/VBoxContainer" method="_on_quit_button_pressed"]
