@@ -156,7 +156,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="CloseButton" type="Button" parent="DarkBG/PanelContainer" unique_id=839884724]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

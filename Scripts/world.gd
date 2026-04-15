@@ -39,8 +39,8 @@ func _ready() -> void:
 	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
 	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
 	$"../Entities/TestEntity".position = pos
-	print(pos)
 	#
+	Globals.set_world(self)
 
 func get_tile_on_noise(noise_val) -> String:
 	var tile_to_return = ''

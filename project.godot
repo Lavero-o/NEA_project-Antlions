@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Antlions"
-run/main_scene="uid://dqulnxu21jm7k"
+run/main_scene="uid://ch514mk60rq2w"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 

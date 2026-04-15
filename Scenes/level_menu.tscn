@@ -54,41 +54,45 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=2010233275]
 layout_mode = 2
-text = "LEVELS"
+text = "SAVES"
 label_settings = SubResource("LabelSettings_28flt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1829430572]
+[node name="NewButton" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=415469992]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 5
+text = "New"
+alignment = 0
 
-[node name="EasyLevelButton" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1645933469]
-custom_minimum_size = Vector2(100, 60)
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1306342726]
 layout_mode = 2
-text = "EASY"
 
-[node name="NormalLevelButton" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=571547934]
-custom_minimum_size = Vector2(100, 60)
+[node name="Button" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=589816309]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "NORMAL"
+text = "Save 1"
+alignment = 0
 
-[node name="HardLevelButton" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=672566399]
-custom_minimum_size = Vector2(100, 60)
+[node name="Button2" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1594128096]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "HARD"
+text = "Save 2
+"
+alignment = 0
+
+[node name="Button3" type="Button" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=892921069]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Save 3
+"
+alignment = 0
 
 [node name="CloseButton" type="Button" parent="ColorRect/PanelContainer" unique_id=1710540572]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[connection signal="pressed" from="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer/EasyLevelButton" to="." method="_on_easy_level_button_pressed"]
-[connection signal="pressed" from="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer/NormalLevelButton" to="." method="_on_normal_level_button_pressed"]
-[connection signal="pressed" from="ColorRect/PanelContainer/MarginContainer/VBoxContainer/GridContainer/HardLevelButton" to="." method="_on_hard_level_button_pressed"]
+[connection signal="pressed" from="ColorRect/PanelContainer/MarginContainer/VBoxContainer/NewButton" to="." method="_on_new_button_pressed"]
 [connection signal="pressed" from="ColorRect/PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]

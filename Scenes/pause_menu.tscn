@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bvf7xn324a2dr"]
 
-[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://dtd5e11k6nnwe" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 [ext_resource type="PackedScene" uid="uid://ds0be0wem4xg8" path="res://Scenes/options_menu.tscn" id="2_1och7"]
-[ext_resource type="PackedScene" uid="uid://ch514mk60rq2w" path="res://Scenes/main_menu.tscn" id="3_bpi0q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ptvp"]
 font_size = 24
@@ -16,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emv3i")
 options_ui_scene = ExtResource("2_1och7")
-main_menu_scene = ExtResource("3_bpi0q")
 
 [node name="DarkBG" type="ColorRect" parent="." unique_id=1669200131]
 layout_mode = 1
@@ -85,14 +83,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Save & Exit"
 
-[node name="CloseButton" type="Button" parent="DarkBG/PanelContainer" unique_id=839884724]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
 [connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="DarkBG/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="DarkBG/PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]

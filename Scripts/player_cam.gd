@@ -5,6 +5,8 @@ class_name Player
 
 @export var camera: Camera2D
 
+var world_rect: Rect2 = Rect2(0,0,0,0)
+
 const BASE_SPEED: float = 500.0
 const BASE_ACCEL: float = 1000.0
 var speed_mult: float = 1.0
@@ -23,6 +25,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
+	if world_rect == Rect2(0,0,0,0):
+		world_rect = Globals.get_world_rect()
 	
 	if move_vector.length() != 0:
 		velocity.x = move_toward(velocity.x, move_vector.x*speed, delta*accel*5)
@@ -32,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		#print('stop')
 		velocity.x = move_toward(velocity.x, 0, delta*accel)
 		velocity.y = move_toward(velocity.y, 0, delta*accel)
+	position = position.clamp(Vector2(0,0), world_rect.end)
 
 
 func zoom_in(percent_amount: float) -> void:
