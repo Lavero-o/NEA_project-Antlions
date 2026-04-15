@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://js6u6r2008d3"]
+
+[ext_resource type="PackedScene" uid="uid://boye7g5fxn4jq" path="res://Prefabs/Fundamentals/entity.tscn" id="1_saefs"]
+
+[sub_resource type="Gradient" id="Gradient_6xnmh"]
+offsets = PackedFloat32Array(0.98054475)
+colors = PackedColorArray(0.4679942, 0.2871038, 3.3691526e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c2qnj"]
+gradient = SubResource("Gradient_6xnmh")
+width = 36
+height = 36
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpmmm"]
+size = Vector2(36, 36)
+
+[node name="NestEntity" unique_id=1250800265 instance=ExtResource("1_saefs")]
+speed = 0.0
+stationary = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=2144752756]
+texture = SubResource("GradientTexture2D_c2qnj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1397141683]
+shape = SubResource("RectangleShape2D_kpmmm")

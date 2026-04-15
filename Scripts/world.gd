@@ -35,11 +35,11 @@ func _ready() -> void:
 	end_vinette.height = world_height
 	end_gradient = end_vinette.get_image()
 	gen_world()
-	#
-	#
 	Globals.set_world(self)
 
-func spawn_entity(entity: Entity) -> void:
+func spawn_entity(entity) -> void:
+	if entity is PackedScene:
+		entity = entity.instantiate()
 	if not entity.get_parent():
 		%Entities.add_child(entity)
 	

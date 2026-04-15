@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cp11gxddvld2q"]
 
 [ext_resource type="Script" uid="uid://c3axs76u8xbjh" path="res://Scripts/level_menu.gd" id="1_c64aj"]
-[ext_resource type="PackedScene" uid="uid://dqulnxu21jm7k" path="res://Scenes/level.tscn" id="2_ymr0u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_28flt"]
 font_size = 32
@@ -14,7 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c64aj")
-level_scene = ExtResource("2_ymr0u")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1669200131]
 layout_mode = 1

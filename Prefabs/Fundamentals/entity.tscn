@@ -25,6 +25,8 @@ func _init() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if stationary:
+		return
 	_calculate_moving(delta)
 	move_and_slide()
 
