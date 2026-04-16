@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://c6t3juv338y3k"]
 
-[ext_resource type="Script" uid="uid://buc2s5x7qkr0v" path="res://Prefabs/test_entity.gd" id="1_fbm84"]
+[ext_resource type="Script" uid="uid://buc2s5x7qkr0v" path="res://Scripts/test_entity.gd" id="1_fbm84"]
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="3_ub77q"]
-[ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scripts/entity_move_mouse_input.gd" id="4_32b4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acrhc"]
 size = Vector2(13, 13)
@@ -17,7 +16,3 @@ texture = ExtResource("3_ub77q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1332083824]
 shape = SubResource("RectangleShape2D_acrhc")
-
-[node name="Test_mouse_pointer" type="Node" parent="." unique_id=868732699 node_paths=PackedStringArray("entity")]
-script = ExtResource("4_32b4g")
-entity = NodePath("..")

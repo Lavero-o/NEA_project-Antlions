@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://js6u6r2008d3"]
 
-[ext_resource type="Script" uid="uid://cvsw7iym21kpn" path="res://Scripts/nest_functionality.gd" id="2_6xnmh"]
-[ext_resource type="Script" uid="uid://xssuymvggqqh" path="res://Prefabs/nest_entity.gd" id="2_c2qnj"]
+[ext_resource type="Script" uid="uid://xssuymvggqqh" path="res://Scripts/nest_entity.gd" id="2_c2qnj"]
 
 [sub_resource type="Gradient" id="Gradient_6xnmh"]
 offsets = PackedFloat32Array(0.98054475)
@@ -29,13 +28,3 @@ texture = SubResource("GradientTexture2D_c2qnj")
 shape = SubResource("RectangleShape2D_kpmmm")
 
 [node name="NestFunctionality" type="Node" parent="." unique_id=1721656615]
-script = ExtResource("2_6xnmh")
-queen_cap = null
-ant_cap = null
-food_cap = null
-inv_cap = null
-start_queens = null
-start_worker_ant = null
-start_scout_ant = null
-start_fighter_ant = null
-start_food = null

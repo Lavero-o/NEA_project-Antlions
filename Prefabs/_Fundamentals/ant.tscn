@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c28nxvnatxwno"]
 
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="2_mdqn8"]
-[ext_resource type="Script" uid="uid://btqkpvt75jegw" path="res://Prefabs/Fundamentals/ant.gd" id="2_qcliy"]
+[ext_resource type="Script" uid="uid://btqkpvt75jegw" path="res://Scripts/ant.gd" id="2_qcliy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exc08"]
 size = Vector2(13, 13)

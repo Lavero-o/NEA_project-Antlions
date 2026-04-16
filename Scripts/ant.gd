@@ -1,6 +1,8 @@
-extends Entity
 class_name Ant
+extends Entity
 
+var hunger: float
+var item_held: Entity
 
 
 func drop_item():

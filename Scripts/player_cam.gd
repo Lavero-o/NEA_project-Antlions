@@ -23,6 +23,7 @@ var zoom_min: float = 4
 func _process(delta: float) -> void:
 	handle_smooth_zoom(delta)
 	move_and_slide()
+	position = position.clamp(Vector2(0,0), world_rect.end)
 
 func _physics_process(delta: float) -> void:
 	if world_rect == Rect2(0,0,0,0):
@@ -37,7 +38,6 @@ func _physics_process(delta: float) -> void:
 		#print('stop')
 		velocity.x = move_toward(velocity.x, 0, delta*accel)
 		velocity.y = move_toward(velocity.y, 0, delta*accel)
-	position = position.clamp(Vector2(0,0), world_rect.end)
 
 
 func zoom_in(percent_amount: float) -> void:

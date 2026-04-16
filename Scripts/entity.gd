@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Entity
 
-static var scene = preload("res://Prefabs/Fundamentals/entity.tscn")
+static var scene = preload("res://Prefabs/_Fundamentals/entity.tscn")
 
 @export_group('Stats')
 @export var health: float = 60
@@ -18,7 +18,7 @@ var turn_factor: float = 0.1
 
 var actions = []
 var allowed_actions = []
-var item_held: Entity
+
 
 func _init() -> void:
 	pass
