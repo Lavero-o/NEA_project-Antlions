@@ -23,19 +23,19 @@ var noise_thresholds = {
 @export var world_noise: FastNoiseLite
 @export var end_vinette: GradientTexture2D
 
+@export var world_seed: int = -1
+
 var noise_image: Image
 var end_gradient: Image
 
 var used_rect: Rect2
 
 func _ready() -> void:
-	world_noise.seed = randi()
-	noise_image = world_noise.get_image(world_width, world_height)
-	end_vinette.width = world_width
-	end_vinette.height = world_height
-	end_gradient = end_vinette.get_image()
-	gen_world()
+	
+	gen_world(world_seed)
+	
 	Globals.set_world(self)
+	
 
 func spawn_entity(entity) -> void:
 	if entity is PackedScene:
@@ -62,7 +62,15 @@ func get_noise_val(pos) -> float:
 	noise_val *= end_gradient.get_pixel(pos.x,pos.y).get_luminance()
 	return noise_val
 
-func gen_world() -> void:
+func gen_world(seed) -> void:
+	world_seed = seed
+	
+	world_noise.seed =  world_seed
+	noise_image = world_noise.get_image(world_width, world_height)
+	end_vinette.width = world_width
+	end_vinette.height = world_height
+	end_gradient = end_vinette.get_image()
+	
 	for tile_y in range(0,world_height):
 		for tile_x in range(0,world_width):
 			var noise = get_noise_val(Vector2i(tile_x, tile_y))
@@ -70,7 +78,7 @@ func gen_world() -> void:
 			var tile_atlas_cord = tile_atlas[tile]
 			set_cell(Vector2i(tile_x, tile_y), 0, tile_atlas_cord)
 	
-	used_rect = get_used_rect()
+	used_rect = Rect2(get_used_rect())
 
 func is_land(cell_pos: Vector2):
 	pass

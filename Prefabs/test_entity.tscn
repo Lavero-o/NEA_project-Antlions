@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://c6t3juv338y3k"]
 
-[ext_resource type="PackedScene" uid="uid://boye7g5fxn4jq" path="res://Prefabs/Fundamentals/entity.tscn" id="1_l2adr"]
-[ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://Scripts/entity.gd" id="2_l2adr"]
+[ext_resource type="Script" uid="uid://buc2s5x7qkr0v" path="res://Prefabs/test_entity.gd" id="1_fbm84"]
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="3_ub77q"]
 [ext_resource type="Script" uid="uid://dwl4n5wxtlj76" path="res://Scripts/entity_move_mouse_input.gd" id="4_32b4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acrhc"]
-size = Vector2(26, 26)
+size = Vector2(13, 13)
 
-[node name="TestEntity" unique_id=673517539 instance=ExtResource("1_l2adr")]
-script = ExtResource("2_l2adr")
+[node name="TestEntity" type="CharacterBody2D" unique_id=673517539]
+motion_mode = 1
+script = ExtResource("1_fbm84")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1738517534]
-scale = Vector2(0.25, 0.25)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738517534]
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_ub77q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1332083824]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1332083824]
 shape = SubResource("RectangleShape2D_acrhc")
 
-[node name="Test_mouse_pointer" type="Node" parent="." index="2" unique_id=868732699 node_paths=PackedStringArray("entity")]
+[node name="Test_mouse_pointer" type="Node" parent="." unique_id=868732699 node_paths=PackedStringArray("entity")]
 script = ExtResource("4_32b4g")
 entity = NodePath("..")

@@ -1,84 +1,18 @@
-[gd_scene format=3 uid="uid://boye7g5fxn4jq"]
+[gd_scene format=3 uid="uid://bdu0dsfcvc5qa"]
 
-[sub_resource type="GDScript" id="GDScript_knjoh"]
-script/source = "extends CharacterBody2D
-#class_name Entity
+[ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://Scripts/entity.gd" id="1_tr7x0"]
+[ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="2_g48pi"]
 
-@export_category('Movement')
-@export var health: float = 60
-@export var speed: float = 20
-@export_category('Variables')
-@export var stationary: bool = false
-
-var friction = 10
-
-var moving_to: Vector2
-var is_moving_to_point: bool
-
-var turn_factor: float = 0.1
-
-var actions = []
-var allowed_actions = []
-var item_held: Entity
-
-func _init() -> void:
-	pass
-
-func _physics_process(delta: float) -> void:
-	if stationary:
-		return
-	_calculate_moving(delta)
-	move_and_slide()
-
-
-func add_action(action):
-	if action.enum not in allowed_actions:
-		return
-	actions.append(action)
-
-
-func get_move_vector() -> Vector2:
-	if not is_moving_to_point:
-		pass
-	return (moving_to - position).normalized()
-
-func _calculate_moving(delta: float) -> void:
-	if is_moving_to_point:
-		var move_vector = get_move_vector()
-		velocity = move_vector * speed * 10
-		if velocity.length() * delta > _get_moving_point_vector().length():
-			position = moving_to
-			velocity = Vector2.ZERO
-			#print(\"ended moving to:\", moving_to)
-	else:
-		velocity = Vector2.ZERO
-
-func _get_moving_point_vector() -> Vector2:
-	return moving_to - position
-
-func drop_item():
-	if not item_held:
-		return false
-	
-	#functionality here !!
-	
-	item_held = null
-	return true
-
-func grab(item):
-	if item_held:
-		drop_item()
-	
-	#functionality here !!
-	
-	item_held = item
-
-func move_to(point: Vector2) -> void:
-	is_moving_to_point = true
-	moving_to = point
-	#print(\"started moving towards:\",moving_to)
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_regvm"]
+size = Vector2(13, 13)
 
 [node name="Entity" type="CharacterBody2D" unique_id=1250800265]
 motion_mode = 1
-script = SubResource("GDScript_knjoh")
+script = ExtResource("1_tr7x0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1111701873]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_g48pi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1872563755]
+shape = SubResource("RectangleShape2D_regvm")

@@ -1,10 +1,12 @@
 extends CharacterBody2D
 class_name Entity
 
-@export_category('Movement')
+static var scene = preload("res://Prefabs/Fundamentals/entity.tscn")
+
+@export_group('Stats')
 @export var health: float = 60
 @export var speed: float = 20
-@export_category('Variables')
+@export_group('Variables')
 @export var stationary: bool = false
 
 var friction = 10
@@ -21,9 +23,18 @@ var item_held: Entity
 func _init() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
-	_calculate_moving(delta)
+static func new() -> Entity:
+	return scene.duplicate().instantiate()
+
+func _process(delta: float) -> void:
+	if stationary:
+		return
 	move_and_slide()
+
+func _physics_process(delta: float) -> void:
+	if stationary:
+		return
+	_calculate_moving(delta)
 
 
 func add_action(action):
@@ -51,22 +62,7 @@ func _calculate_moving(delta: float) -> void:
 func _get_moving_point_vector() -> Vector2:
 	return moving_to - position
 
-func drop_item():
-	if not item_held:
-		return false
-	
-	#functionality here !!
-	
-	item_held = null
-	return true
 
-func grab(item):
-	if item_held:
-		drop_item()
-	
-	#functionality here !!
-	
-	item_held = item
 
 func move_to(point: Vector2) -> void:
 	is_moving_to_point = true
