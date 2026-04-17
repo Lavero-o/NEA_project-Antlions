@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Entity
 
+var world_node: World
+
 static var scene = preload("res://Prefabs/_Fundamentals/entity.tscn")
 
 @export_group('Stats')

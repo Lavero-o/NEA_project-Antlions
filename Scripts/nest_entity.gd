@@ -28,8 +28,7 @@ var food: int
 
 
 func _world_ready() -> void:
-	print('asdasd')
-	var entity_node = Globals.get_world().entity_node
+	var entity_node = world_node.entity_node
 	
 	#queens = start_queens
 	for i in range(start_worker_ants+start_scout_ants+start_fighter_ants):
@@ -38,17 +37,15 @@ func _world_ready() -> void:
 		print(position)
 		ant.position = position
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print(Globals.get_world())
-	Globals.get_world().world_ready.connect(_world_ready)
+
+func _init() -> void:
 	food = start_food
+	Globals.get_world().world_ready.connect(_world_ready)
 
 
 func _spawn_ant():
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
