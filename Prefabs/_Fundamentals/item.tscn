@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://byw0f8d83562g"]
+
+[ext_resource type="Script" uid="uid://docr6g41ttidb" path="res://item.gd" id="1_vkwsk"]
+
+[node name="Item" type="StaticBody2D" unique_id=233058587]
+script = ExtResource("1_vkwsk")
+health = 0.0
+speed = 0.0
+stationary = true

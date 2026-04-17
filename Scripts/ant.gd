@@ -1,5 +1,6 @@
-class_name Ant
 extends Entity
+class_name Ant
+
 
 var hunger: float
 var item_held: Entity

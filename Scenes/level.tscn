@@ -14,9 +14,10 @@
 [node name="Level" type="Node2D" unique_id=1700748744]
 script = ExtResource("1_qxfql")
 
-[node name="World" parent="." unique_id=1574510773 instance=ExtResource("1_jjgbg")]
+[node name="World" parent="." unique_id=1574510773 node_paths=PackedStringArray("entity_node") instance=ExtResource("1_jjgbg")]
 unique_name_in_owner = true
 scale = Vector2(12, 12)
+entity_node = NodePath("../Entities")
 
 [node name="Entities" type="Node2D" parent="." unique_id=1014762199]
 unique_name_in_owner = true

@@ -26,5 +26,3 @@ texture = SubResource("GradientTexture2D_c2qnj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1397141683]
 shape = SubResource("RectangleShape2D_kpmmm")
-
-[node name="NestFunctionality" type="Node" parent="." unique_id=1721656615]

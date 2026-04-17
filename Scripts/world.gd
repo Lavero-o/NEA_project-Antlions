@@ -17,6 +17,11 @@ var noise_thresholds = {
 	'grass': 1
 }
 
+signal world_ready
+
+
+@export var entity_node: Node2D
+
 @export var world_width = 250
 @export var world_height = 250
 
@@ -31,11 +36,12 @@ var end_gradient: Image
 var used_rect: Rect2
 
 func _ready() -> void:
-	
 	gen_world(world_seed)
-	
 	Globals.set_world(self)
 	
+	spawn_entity(load("res://Prefabs/Structures/nest_entity.tscn"))
+	
+	emit_signal('world_ready')
 
 func spawn_entity(entity) -> void:
 	if entity is PackedScene:
@@ -62,8 +68,8 @@ func get_noise_val(pos) -> float:
 	noise_val *= end_gradient.get_pixel(pos.x,pos.y).get_luminance()
 	return noise_val
 
-func gen_world(seed) -> void:
-	world_seed = seed
+func gen_world(_seed) -> void:
+	world_seed = _seed
 	
 	world_noise.seed =  world_seed
 	noise_image = world_noise.get_image(world_width, world_height)
@@ -80,7 +86,7 @@ func gen_world(seed) -> void:
 	
 	used_rect = Rect2(get_used_rect())
 
-func is_land(cell_pos: Vector2):
+func is_land(_cell_pos: Vector2):
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

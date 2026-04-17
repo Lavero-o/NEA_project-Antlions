@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://so16upxrkgxq"]
+
+[ext_resource type="Script" uid="uid://505wce8pvsuf" path="res://Scripts/structure.gd" id="1_6y1s1"]
+
+[node name="Structure" type="StaticBody2D" unique_id=174112599]
+script = ExtResource("1_6y1s1")
+speed = 0.0
+stationary = true

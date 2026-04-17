@@ -29,7 +29,7 @@ func process_input() -> void:
 		selection_end = get_viewport().get_mouse_position()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	process_input()
 	
 	if selecting:
