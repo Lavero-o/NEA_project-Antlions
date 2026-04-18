@@ -28,15 +28,11 @@ func _init() -> void:
 static func new() -> Entity:
 	return scene.duplicate().instantiate()
 
-func _process(delta: float) -> void:
-	if stationary:
-		return
-	move_and_slide()
-
 func _physics_process(delta: float) -> void:
 	if stationary:
 		return
 	_calculate_moving(delta)
+	move_and_slide()
 
 
 func add_action(action):
@@ -64,7 +60,8 @@ func _calculate_moving(delta: float) -> void:
 func _get_moving_point_vector() -> Vector2:
 	return moving_to - position
 
-
+func get_sprite() -> Sprite2D:
+	return $Sprite2D
 
 func move_to(point: Vector2) -> void:
 	is_moving_to_point = true

@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://js6u6r2008d3"]
 
+[ext_resource type="Shader" uid="uid://dkvvfvxbqmy6s" path="res://Assets/main.gdshader" id="1_kh80k"]
 [ext_resource type="Script" uid="uid://xssuymvggqqh" path="res://Scripts/nest_entity.gd" id="2_c2qnj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kh80k"]
+shader = ExtResource("1_kh80k")
+shader_parameter/color = Color(0.47058824, 0.99215686, 0.60784316, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="Gradient" id="Gradient_6xnmh"]
 offsets = PackedFloat32Array(0.98054475)
@@ -15,6 +24,7 @@ height = 36
 size = Vector2(36, 36)
 
 [node name="NestEntity" type="CharacterBody2D" unique_id=1250800265]
+collision_priority = 0.9
 motion_mode = 1
 script = ExtResource("2_c2qnj")
 health = 1000.0
@@ -22,6 +32,7 @@ speed = 0.0
 stationary = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144752756]
+material = SubResource("ShaderMaterial_kh80k")
 texture = SubResource("GradientTexture2D_c2qnj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1397141683]

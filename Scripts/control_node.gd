@@ -53,5 +53,5 @@ func handle_pan_start(event: InputEvent) -> void:
 func handle_pan(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion or not panning:
 		return
-	print(event.get_class()," ", event is InputEventMouseMotion," ", event is InputEventMouseButton)
+	#print(event.get_class()," ", event is InputEventMouseMotion," ", event is InputEventMouseButton)
 	player.move_cam_by(-event.relative / player.zoom)

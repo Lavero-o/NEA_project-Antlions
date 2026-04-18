@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://buc2s5x7qkr0v" path="res://Scripts/test_entity.gd" id="1_fbm84"]
 [ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="3_ub77q"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qknxv"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acrhc"]
 size = Vector2(13, 13)
 
@@ -11,6 +13,7 @@ motion_mode = 1
 script = ExtResource("1_fbm84")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738517534]
+material = SubResource("ShaderMaterial_qknxv")
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_ub77q")
 

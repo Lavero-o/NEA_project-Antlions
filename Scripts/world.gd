@@ -39,11 +39,14 @@ func _ready() -> void:
 	gen_world(world_seed)
 	Globals.set_world(self)
 	
-	spawn_entity(load("res://Prefabs/Structures/nest_entity.tscn"))
+	var nest = spawn_entity(load("res://Prefabs/Structures/nest_entity.tscn"))
 	
 	emit_signal('world_ready')
+	
+	get_viewport().get_camera_2d().position = nest.position
+	print(get_viewport().get_camera_2d())
 
-func spawn_entity(entity) -> void:
+func spawn_entity(entity) -> Node:
 	if entity is PackedScene:
 		entity = entity.instantiate()
 	if not entity.get_parent():
@@ -54,6 +57,7 @@ func spawn_entity(entity) -> void:
 	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
 	
 	entity.position = pos
+	return entity
 
 func get_tile_on_noise(noise_val) -> String:
 	var tile_to_return = ''
