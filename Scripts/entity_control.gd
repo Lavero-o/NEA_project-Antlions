@@ -42,7 +42,8 @@ func select_entity(entity: Entity) -> void:
 	selected.append(entity)
 
 func deselect_all() -> void:
-	for entity in selected:
+	var to_deselect = selected.duplicate()
+	for entity in to_deselect:
 		deselect_entity(entity)
 
 func deselect_entity(entity: Entity) -> void:

@@ -43,7 +43,7 @@ func _ready() -> void:
 	
 	emit_signal('world_ready')
 	
-	get_viewport().get_camera_2d().position = nest.position
+	get_viewport().get_camera_2d().get_parent().position = nest.position
 	print(get_viewport().get_camera_2d())
 
 func spawn_entity(entity) -> Node:

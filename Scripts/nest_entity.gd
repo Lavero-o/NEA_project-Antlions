@@ -13,7 +13,7 @@ var entity_node: Node2D
 @export var start_queens: int = 1
 @export var start_worker_ants: int = 1
 @export var start_scout_ants: int = 2
-@export var start_fighter_ants: int = 100
+@export var start_fighter_ants: int = 2
 @export var start_food: int = 10
 
 #temporary
@@ -34,7 +34,7 @@ func _world_ready() -> void:
 	
 	#queens = start_queens
 	for i in range(start_worker_ants+start_scout_ants+start_fighter_ants):
-		_spawn_ant(ant_scene.duplicate())
+		_spawn_ant(ant_scene.duplicate(true))
 
 
 func _init() -> void:

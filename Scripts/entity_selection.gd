@@ -22,12 +22,21 @@ func _ready() -> void:
 	selection_rect_node = selection_rect_scene.instantiate()
 
 func process_input() -> void:
+	
+	
 	if Input.is_action_just_pressed("select"):
-		selecting = true
 		selection_start = get_viewport().get_mouse_position()
 		#print("selected",(selection_start + get_viewport().canvas_transform.origin*-1)/get_viewport().get_camera_2d().zoom)
-		
+	
+	if Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
+		if selecting != true:
+			mouse_distance_from_start = (get_viewport().get_mouse_position() - selection_start).length()
+			if mouse_distance_from_start > 5:
+				selecting = true
+	
 	if Input.is_action_just_released("select"):
+		if not selecting:
+			return
 		selecting = false
 		selection_end = get_viewport().get_mouse_position()
 		#print("un-selected",(selection_end + get_viewport().canvas_transform.origin*-1)/get_viewport().get_camera_2d().zoom)
@@ -62,6 +71,7 @@ func get_entities_witnin_rect() -> Array[Entity]:
 
 func _process(_delta: float) -> void:
 	process_input()
+	
 	
 	if selecting:
 		if not selection_rect_node.is_inside_tree():
