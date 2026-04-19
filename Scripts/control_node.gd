@@ -1,6 +1,6 @@
 extends Node
 
-@export var player: Player
+@export var player: CharacterBody2D
 @export var zoom_amount: float = 1.1
 
 var test_count = 0

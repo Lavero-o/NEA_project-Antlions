@@ -75,13 +75,13 @@ shader_parameter/pattern = 1
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exc08"]
-size = Vector2(13, 13)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0p6rw"]
+radius = 5.0
 
 [node name="Ant" type="CharacterBody2D" unique_id=1250800265]
-collision_priority = 0.05
 motion_mode = 1
 script = ExtResource("2_qcliy")
+speed = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487389852]
 material = SubResource("ShaderMaterial_12oew")
@@ -90,4 +90,6 @@ texture = ExtResource("2_0p6rw")
 metadata/selected = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1279372511]
-shape = SubResource("RectangleShape2D_exc08")
+shape = SubResource("CircleShape2D_0p6rw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1197224476]

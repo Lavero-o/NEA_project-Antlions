@@ -90,8 +90,6 @@ size = Vector2(36, 36)
 collision_priority = 0.9
 motion_mode = 1
 script = ExtResource("2_c2qnj")
-health = 1000.0
-speed = 0.0
 stationary = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144752756]

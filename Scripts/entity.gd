@@ -56,6 +56,10 @@ func _calculate_moving(delta: float) -> void:
 			#print("ended moving to:", moving_to)
 	else:
 		velocity = Vector2.ZERO
+	#Action.ActionParams.new()
+
+func perform_action(action: Action):
+	pass
 
 func _get_moving_point_vector() -> Vector2:
 	return moving_to - position
@@ -64,6 +68,8 @@ func get_sprite() -> Sprite2D:
 	return $Sprite2D
 
 func move_to(point: Vector2) -> void:
+	if stationary:
+		return
 	is_moving_to_point = true
 	moving_to = point
 	#print("started moving towards:",moving_to)

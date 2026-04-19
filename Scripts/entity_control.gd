@@ -37,7 +37,7 @@ func select_entity(entity: Entity) -> void:
 	if entity_list_pos != -1:
 		print_debug("entity {entity} already selected")
 		return
-	print(entity.get_sprite().material)
+	#print(entity.get_sprite().material)	
 	entity.get_sprite().material.set("shader_parameter/width", 6)
 	selected.append(entity)
 
@@ -56,7 +56,7 @@ func deselect_entity(entity: Entity) -> void:
 
 
 func _on_entities_selected(entities: Array[Entity]) -> void:
-	print(entities)
+	#print(entities)
 	deselect_all()
 	for entity in entities:
 		select_entity(entity)

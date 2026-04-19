@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dbvfqpdbm38v2"]
+
+[ext_resource type="PackedScene" uid="uid://ciyumyfbtch8m" path="res://Scenes/world.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://dvyjle1oidulh" path="res://Scripts/level.gd" id="1_qxfql"]
+[ext_resource type="Script" uid="uid://da8p8lunlgpwx" path="res://Scripts/player_cam.gd" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://codm7bn8fqj3v" path="res://Scripts/camera_2d.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://dos051svvodfj" path="res://Scripts/control_node.gd" id="4_21xkr"]
+[ext_resource type="Script" uid="uid://b7r650ylsqej0" path="res://Scripts/entity_control.gd" id="8_344ge"]
+[ext_resource type="Script" uid="uid://dhyav0s8w0teg" path="res://Scripts/canvas_layer.gd" id="9_bvt00"]
+[ext_resource type="PackedScene" uid="uid://coxs4q4gumdpt" path="res://Scenes/selection_area.tscn" id="9_qxfql"]
+[ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scripts/entity_selection.gd" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://c7p1bp5526eom" path="res://Scenes/select_rect.tscn" id="10_hptm8"]
+[ext_resource type="PackedScene" uid="uid://bvf7xn324a2dr" path="res://Scenes/pause_menu.tscn" id="10_oqgf2"]
+
+[node name="Level" type="Node2D" unique_id=1700748744]
+script = ExtResource("1_qxfql")
+
+[node name="World" parent="." unique_id=1574510773 node_paths=PackedStringArray("entity_node") instance=ExtResource("1_jjgbg")]
+unique_name_in_owner = true
+scale = Vector2(12, 12)
+entity_node = NodePath("../Entities")
+
+[node name="Entities" type="Node2D" parent="." unique_id=1014762199]
+unique_name_in_owner = true
+
+[node name="CameraChar" type="CharacterBody2D" parent="." unique_id=1054948196 node_paths=PackedStringArray("camera")]
+motion_mode = 1
+script = ExtResource("2_jjvhh")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="CameraChar" unique_id=1993130692]
+zoom = Vector2(2, 2)
+script = ExtResource("3_kry3j")
+
+[node name="ControlNode" type="Node" parent="CameraChar" unique_id=1388406024 node_paths=PackedStringArray("player")]
+script = ExtResource("4_21xkr")
+player = NodePath("..")
+
+[node name="EntityControl" type="Node" parent="CameraChar" unique_id=1136106208]
+script = ExtResource("8_344ge")
+
+[node name="EntitySelection" type="Node" parent="CameraChar/EntityControl" unique_id=188448409 node_paths=PackedStringArray("canvas")]
+script = ExtResource("9_ynf5e")
+canvas = NodePath("../../../CanvasLayer")
+selection_rect_scene = ExtResource("10_hptm8")
+
+[node name="SelectionArea" parent="CameraChar/EntityControl" unique_id=1915225179 instance=ExtResource("9_qxfql")]
+position = Vector2(1500, 1500)
+monitorable = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1986374862]
+script = ExtResource("9_bvt00")
+pause_ui_scene = ExtResource("10_oqgf2")
+
+[connection signal="entities_selected" from="CameraChar/EntityControl/EntitySelection" to="CameraChar/EntityControl" method="_on_entities_selected"]
+
+[editable path="CameraChar/EntityControl/SelectionArea"]

@@ -36,7 +36,7 @@ var end_gradient: Image
 var used_rect: Rect2
 
 func _ready() -> void:
-	gen_world(world_seed)
+	gen_world()
 	Globals.set_world(self)
 	
 	var nest = spawn_entity(load("res://Prefabs/Structures/nest_entity.tscn"))
@@ -73,7 +73,9 @@ func get_noise_val(pos) -> float:
 	noise_val *= end_gradient.get_pixel(pos.x,pos.y).get_luminance()
 	return noise_val
 
-func gen_world(_seed) -> void:
+func gen_world(_seed = -1) -> void:
+	if _seed == -1:
+		_seed = randi()
 	world_seed = _seed
 	
 	world_noise.seed =  world_seed

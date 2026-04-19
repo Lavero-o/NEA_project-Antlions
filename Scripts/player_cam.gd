@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name Player
-
 
 @export var camera: Camera2D
 
