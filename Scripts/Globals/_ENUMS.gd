@@ -1,14 +1,14 @@
-extends Node
-
 class_name Enums
 
-enum action {
+
+enum actions {
 	MOVE,
 	GRAB,
 	ATTACK,
 	BUILD,
 	DEFEND,
-	REPAIR
+	REPAIR,
+	NONE
 }
 
 

@@ -19,6 +19,10 @@ run/main_scene="uid://ch514mk60rq2w"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+Player="*uid://cradjgftpvawb"
+
 [display]
 
 window/size/viewport_width=1280

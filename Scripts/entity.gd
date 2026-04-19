@@ -10,6 +10,7 @@ static var scene = preload("res://Prefabs/_Fundamentals/entity.tscn")
 @export var speed: float = 20
 @export_group('Variables')
 @export var stationary: bool = false
+@export var selectable: bool = true
 
 var friction = 10
 
