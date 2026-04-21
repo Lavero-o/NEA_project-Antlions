@@ -20,9 +20,8 @@ var selection_rect_node: ColorRect
 func _ready() -> void:
 	
 	selection_rect_node = selection_rect_scene.instantiate()
-	selection_area.body_entered.connect("_on_select_area_body_entered")
-	selection_area.body_exited.connect("_on_select_area_body_exited")
-	
+	selection_area.body_entered.connect(_on_select_area_body_entered)
+	selection_area.body_exited.connect(_on_select_area_body_exited)
 
 
 func _process(_delta: float) -> void:
@@ -40,28 +39,23 @@ func _process(_delta: float) -> void:
 	else:
 		if selection_rect_node.is_inside_tree():
 			canvas.remove_child(selection_rect_node)
-	
 
 
 func _physics_process(_delta: float) -> void:
-	
 	if not selecting : return
 	update_select_area()
-	
 
 
 func _on_select_area_body_entered(body: PhysicsBody2D):
 	
 	if not (body is Entity and body.selectable) : return
 	to_select.append(body)
-	
 
 
 func _on_select_area_body_exited(body: PhysicsBody2D):
 	
 	if not (body is Entity and body.selectable) : return
 	to_select.erase(body)
-	
 
 
 func process_input() -> void:
@@ -85,7 +79,6 @@ func process_input() -> void:
 		#print("un-selected",(selection_end + get_viewport().canvas_transform.origin*-1)/get_viewport().get_camera_2d().zoom)
 		
 		entities_selected.emit(to_select)
-	
 
 
 func get_entities_witnin_select() -> Array[Entity]:
@@ -107,24 +100,19 @@ func get_entities_witnin_select() -> Array[Entity]:
 	#print(selection_area.position)
 	#print(collision_shape.shape.size)
 	return entities
-	
 
 
 func update_select_area():
 	
 	selection_area.position = selection_rect_node.get_rect().get_center()
 	collision_shape.shape.size = selection_rect_node.size
-	
 
 
 func draw_rect() -> void:
 	
 	selection_rect_node.set_position(selection_rect.abs().position)
 	selection_rect_node.set_end(selection_rect.abs().end)
-	
 
 
 func screen_to_global_position(pos) -> Vector2:
-	
 	return (pos + get_viewport().canvas_transform.origin*-1) / get_viewport().get_camera_2d().zoom
-	

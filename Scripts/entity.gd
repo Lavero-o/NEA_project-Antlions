@@ -12,19 +12,16 @@ static var scene = preload("res://Prefabs/_Fundamentals/entity.tscn")
 @export var stationary: bool = false
 @export var selectable: bool = true
 
-var friction = 10
+var friction: float = 10.0
 
 var moving_to: Vector2
 var is_moving_to_point: bool
 
-var turn_factor: float = 0.1
+var turn_speed: float = 0.1
 
 var actions = []
 var allowed_actions = []
 
-
-func _init() -> void:
-	pass
 
 static func new() -> Entity:
 	return scene.duplicate().instantiate()
@@ -36,20 +33,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func add_action(action):
-	if action.enum not in allowed_actions:
+func add_action(action: Action) -> void:
+	if action.type not in allowed_actions:
 		return
 	actions.append(action)
 
 
-func get_move_vector() -> Vector2:
+func _get_move_vector() -> Vector2:
 	if not is_moving_to_point:
 		pass
 	return (moving_to - position).normalized()
 
 func _calculate_moving(delta: float) -> void:
 	if is_moving_to_point:
-		var move_vector = get_move_vector()
+		var move_vector = _get_move_vector()
 		velocity = move_vector * speed * 10
 		if velocity.length() * delta > _get_moving_point_vector().length():
 			position = moving_to
@@ -59,7 +56,7 @@ func _calculate_moving(delta: float) -> void:
 		velocity = Vector2.ZERO
 	#Action.ActionParams.new()
 
-func perform_action(action: Action):
+func perform_latest_action(action: Action):
 	pass
 
 func _get_moving_point_vector() -> Vector2:

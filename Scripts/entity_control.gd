@@ -9,7 +9,7 @@ var camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	camera = get_viewport().get_camera_2d()
+	camera = get_parent()
 	pass # Replace with function body.
 
 
@@ -25,10 +25,6 @@ func _input(event: InputEvent) -> void:
 			entity.move_to(_get_mouse_pos())
 
 func _get_mouse_pos() -> Vector2:
-	if not camera:
-		camera = get_viewport()
-		return Vector2(0,0)
-	
 	return (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2)) / camera.zoom + camera.global_position
 
 

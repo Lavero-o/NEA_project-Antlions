@@ -1,3 +1,6 @@
+extends  Node
+
+
 var action_mode: Enums.actions = Enums.actions.NONE
 var selected: Array[Entity]
 var team_id: int
