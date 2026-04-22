@@ -46,5 +46,7 @@ script = ExtResource("9_bvt00")
 pause_ui_scene = ExtResource("10_oqgf2")
 
 [connection signal="entities_selected" from="CameraChar/EntityControl/EntitySelection" to="CameraChar/EntityControl" method="_on_entities_selected"]
+[connection signal="body_entered" from="CameraChar/EntityControl/SelectionArea" to="CameraChar/EntityControl/EntitySelection" method="_on_selection_area_body_entered"]
+[connection signal="body_exited" from="CameraChar/EntityControl/SelectionArea" to="CameraChar/EntityControl/EntitySelection" method="_on_selection_area_body_exited"]
 
 [editable path="CameraChar/EntityControl/SelectionArea"]

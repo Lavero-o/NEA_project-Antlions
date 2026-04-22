@@ -27,22 +27,23 @@ static func new() -> Entity:
 	return scene.duplicate().instantiate()
 
 func _physics_process(delta: float) -> void:
-	if stationary:
-		return
+	if stationary : return
 	_calculate_moving(delta)
+	position += velocity * delta
 	move_and_slide()
 
 
 func add_action(action: Action) -> void:
-	if action.type not in allowed_actions:
-		return
+	if action.type not in allowed_actions : return
 	actions.append(action)
 
 
 func _get_move_vector() -> Vector2:
-	if not is_moving_to_point:
-		pass
+	if not is_moving_to_point : pass
 	return (moving_to - position).normalized()
+
+func complete_logic():
+	print(actions)
 
 func _calculate_moving(delta: float) -> void:
 	if is_moving_to_point:
@@ -56,7 +57,7 @@ func _calculate_moving(delta: float) -> void:
 		velocity = Vector2.ZERO
 	#Action.ActionParams.new()
 
-func perform_latest_action(action: Action):
+func perform_latest_action():
 	pass
 
 func _get_moving_point_vector() -> Vector2:

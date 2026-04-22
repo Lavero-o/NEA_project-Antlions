@@ -21,13 +21,10 @@ signal world_ready
 
 
 @export var entity_node: Node2D
-
-@export var world_width = 250
-@export var world_height = 250
-
+@export var world_width: int = 250
+@export var world_height: int = 250
 @export var world_noise: FastNoiseLite
 @export var end_vinette: GradientTexture2D
-
 @export var world_seed: int = -1
 
 var noise_image: Image

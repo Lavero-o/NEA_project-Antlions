@@ -1,26 +1,27 @@
 class_name Action
 
 var entity: Entity
-var action_enum: Enums.actions
-var params: ActionParams
+var type: Enums.actions
+var params: Action.Params
+var progressing: bool
 
-class ActionParams:
+
+class Params:
 	
 	var target_pos: Vector2
 	var target_entity: Entity
 	
-	func _init(_target_pos: Vector2, _target_entity: Entity) -> void:
+	func _init(_target_pos = null, _target_entity = null) -> void:
 		self.target_pos = _target_pos
 		self.target_entity = _target_entity
-	
 
-static func new(action_type, on_entity, parameters: ActionParams):
-	
+
+func _init(_action_type: Enums.actions, parameters: Action.Params):
+	type = _action_type
+	params = parameters
 	pass
-	
+
 
 static func _static_init() -> void:
-	
 	Node.new()
 	pass
-	

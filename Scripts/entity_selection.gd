@@ -25,7 +25,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	
 	process_input()
 	
 	if selecting:
@@ -68,8 +67,8 @@ func process_input() -> void:
 		if selecting != true:
 			mouse_distance_from_start = (get_viewport().get_mouse_position() - selection_start).length()
 			if mouse_distance_from_start > 5:
+				to_select = await get_entities_witnin_select()
 				selecting = true
-				to_select.append_array(await get_entities_witnin_select())
 	
 	if Input.is_action_just_released("select"):
 		if not selecting:
@@ -104,8 +103,9 @@ func get_entities_witnin_select() -> Array[Entity]:
 
 func update_select_area():
 	
-	selection_area.position = selection_rect_node.get_rect().get_center()
-	collision_shape.shape.size = selection_rect_node.size
+	selection_area.position = screen_to_global_position(selection_rect_node.get_rect().get_center())
+	collision_shape.shape.size = selection_rect_node.size/get_viewport().get_camera_2d().zoom
+	
 
 
 func draw_rect() -> void:
@@ -116,3 +116,15 @@ func draw_rect() -> void:
 
 func screen_to_global_position(pos) -> Vector2:
 	return (pos + get_viewport().canvas_transform.origin*-1) / get_viewport().get_camera_2d().zoom
+
+
+func _on_selection_area_body_entered(body: Node2D) -> void:
+	if not (body is Entity and selecting and not body in to_select) : return
+	print(body)
+	to_select.append(body)
+
+
+func _on_selection_area_body_exited(body: Node2D) -> void:
+	if not (body is Entity and selecting) : return
+	print(body)
+	to_select.erase(body)

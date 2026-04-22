@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	
 	if world_rect == Rect2(0,0,0,0):
 		world_rect = Globals.get_world_rect()
-		print(world_rect)
+		#print(world_rect)
 	
 	if move_vector.length() != 0:
 		velocity.x = move_toward(velocity.x, move_vector.x*speed, delta*accel*5)
@@ -76,5 +76,5 @@ func move_cam_by(vector: Vector2) -> void:
 
 
 func handle_smooth_zoom(delta: float) -> void:
-	print(zoom_amount)
+	#print(zoom_amount)
 	zoom += Vector2(zoom_amount - zoom.x, zoom_amount - zoom.x) * min(delta*20,1)
