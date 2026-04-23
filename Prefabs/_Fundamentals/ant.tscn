@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://c28nxvnatxwno"]
 
 [ext_resource type="Texture2D" uid="uid://cx115eb82wle7" path="res://Assets/basic_ant.svg" id="2_0p6rw"]
+[ext_resource type="Script" uid="uid://b05iumtrbyaaa" path="res://Scripts/Resources/_EntityAI.gd" id="2_12oew"]
 [ext_resource type="Script" uid="uid://btqkpvt75jegw" path="res://Scripts/ant.gd" id="2_qcliy"]
+
+[sub_resource type="Resource" id="Resource_mh46n"]
+script = ExtResource("2_12oew")
+metadata/_custom_type_script = "uid://b05iumtrbyaaa"
 
 [sub_resource type="Shader" id="Shader_0p6rw"]
 code = "shader_type canvas_item;
@@ -81,7 +86,9 @@ radius = 5.0
 [node name="Ant" type="CharacterBody2D" unique_id=1250800265]
 motion_mode = 1
 script = ExtResource("2_qcliy")
-speed = 6.0
+speed = 100.0
+allowed_actions = Array[int]([0])
+AI = SubResource("Resource_mh46n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487389852]
 material = SubResource("ShaderMaterial_12oew")

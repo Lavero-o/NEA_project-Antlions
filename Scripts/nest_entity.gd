@@ -30,7 +30,7 @@ var food: int
 
 
 func _world_ready() -> void:
-	entity_node = world_node.entity_node
+	entity_node = Globals.get_world().entity_node
 	
 	#queens = start_queens
 	

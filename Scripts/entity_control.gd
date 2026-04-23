@@ -17,16 +17,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+
 func _input(event: InputEvent) -> void:
 	
 	#print(event is InputEventMouseButton, event.is_pressed(), event.as_text() == "Left Mouse Button")
-	if event is InputEventMouseButton and event.is_pressed() and event.as_text() == "Left Mouse Button":
+	if Input.is_action_just_pressed("click"):
+		print('asdas')
 		for entity in selected:
-			entity.add_action(Action.new(Enums.actions.MOVE, Action.Params.new(_get_mouse_pos())))
-			entity.perform_latest_action()
-
-func _get_mouse_pos() -> Vector2:
-	return (get_viewport().get_mouse_position() - (get_viewport().get_visible_rect().size / 2)) / camera.zoom + camera.global_position
+			entity.add_action(Action.new(Enums.actions.MOVE, Globals.screen_to_global(event.position)), Input.is_action_pressed("additive_key"))
 
 
 func select_entity(entity: Entity) -> void:

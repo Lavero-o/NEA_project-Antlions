@@ -40,7 +40,7 @@ func _ready() -> void:
 	
 	emit_signal('world_ready')
 	
-	get_viewport().get_camera_2d().get_parent().position = nest.position
+	%CameraChar.position = nest.position
 	print(get_viewport().get_camera_2d())
 
 func spawn_entity(entity) -> Node:
@@ -48,7 +48,6 @@ func spawn_entity(entity) -> Node:
 		entity = entity.instantiate()
 	if not entity.get_parent():
 		%Entities.add_child(entity)
-	entity.world_node = self
 	
 	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
 	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale

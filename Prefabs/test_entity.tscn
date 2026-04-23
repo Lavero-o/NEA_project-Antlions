@@ -11,6 +11,11 @@ size = Vector2(13, 13)
 [node name="TestEntity" type="CharacterBody2D" unique_id=673517539]
 motion_mode = 1
 script = ExtResource("1_fbm84")
+enabled = null
+health = null
+speed = null
+stationary = null
+selectable = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738517534]
 material = SubResource("ShaderMaterial_qknxv")

@@ -47,13 +47,13 @@ func _physics_process(_delta: float) -> void:
 
 func _on_select_area_body_entered(body: PhysicsBody2D):
 	
-	if not (body is Entity and body.selectable) : return
+	if not (body is Entity and body.is_selectable) : return
 	to_select.append(body)
 
 
 func _on_select_area_body_exited(body: PhysicsBody2D):
 	
-	if not (body is Entity and body.selectable) : return
+	if not (body is Entity and body.is_selectable) : return
 	to_select.erase(body)
 
 
@@ -63,7 +63,7 @@ func process_input() -> void:
 		selection_start = get_viewport().get_mouse_position()
 		#print("selected",(selection_start + get_viewport().canvas_transform.origin*-1)/get_viewport().get_camera_2d().zoom)
 	
-	if Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
+	if Input.is_action_pressed("select"):
 		if selecting != true:
 			mouse_distance_from_start = (get_viewport().get_mouse_position() - selection_start).length()
 			if mouse_distance_from_start > 5:
@@ -114,7 +114,7 @@ func draw_rect() -> void:
 	selection_rect_node.set_end(selection_rect.abs().end)
 
 
-func screen_to_global_position(pos) -> Vector2:
+func screen_to_global_position(pos: Vector2) -> Vector2:
 	return (pos + get_viewport().canvas_transform.origin*-1) / get_viewport().get_camera_2d().zoom
 
 

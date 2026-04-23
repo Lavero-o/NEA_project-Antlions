@@ -23,6 +23,7 @@ entity_node = NodePath("../Entities")
 unique_name_in_owner = true
 
 [node name="CameraChar" type="Camera2D" parent="." unique_id=1996829899]
+unique_name_in_owner = true
 script = ExtResource("2_jjvhh")
 
 [node name="ControlNode" type="Node" parent="CameraChar" unique_id=1388406024 node_paths=PackedStringArray("camera")]
