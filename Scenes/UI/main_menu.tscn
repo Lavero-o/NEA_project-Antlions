@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ch514mk60rq2w"]
 
 [ext_resource type="Script" uid="uid://cffm065w4xard" path="res://Scripts/title_buttons.gd" id="1_48xlc"]
-[ext_resource type="PackedScene" uid="uid://cp11gxddvld2q" path="res://Scenes/level_menu.tscn" id="2_1ehe0"]
-[ext_resource type="PackedScene" uid="uid://ds0be0wem4xg8" path="res://Scenes/options_menu.tscn" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://cp11gxddvld2q" path="res://Scenes/UI/level_menu.tscn" id="2_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://ds0be0wem4xg8" path="res://Scenes/UI/options_menu.tscn" id="3_1ehe0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_erv1k"]
 font_size = 60

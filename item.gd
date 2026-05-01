@@ -2,11 +2,5 @@ extends Entity
 class_name Item
 
 @export var stackable: bool
+@export var stack_size: int
 var amount: int
-
-func _ready() -> void:
-	pass
-
-
-func _process(_delta: float) -> void:
-	pass

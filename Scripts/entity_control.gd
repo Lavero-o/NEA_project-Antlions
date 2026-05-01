@@ -1,66 +1,39 @@
 extends Node
 
-
-var selected: Array[Entity] = []
-
 var select_shader = "res://Assets/main.gdshader"
 
 var camera
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Player.connect("entities_selected",_add_width)
+	Player.connect("entities_deselected",_remove_width)
 	camera = get_parent()
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+
+func _update_shader(entities: Array[Entity], selected: bool):
+	var new_width = 6
+	if not selected:
+		new_width = 0
+	for entity in entities:
+		entity._get_shader().set_shader_parameter("width", new_width)
 
 
-func _input(event: InputEvent) -> void:
+func _add_width(entities: Array[Entity]):
+	_update_shader(entities,true)
+
+func _remove_width(entities: Array[Entity]):
+	_update_shader(entities,false)
+
+
+func _input(_event: InputEvent) -> void:
 	
 	#print(event is InputEventMouseButton, event.is_pressed(), event.as_text() == "Left Mouse Button")
 	if Input.is_action_just_pressed("click"):
-		print('asdas')
-		for entity in selected:
-			entity.add_action(Action.new(Enums.actions.MOVE, Globals.screen_to_global(event.position)), Input.is_action_pressed("additive_key"))
+		for entity in Player.selected:
+			entity.add_action(Action.new(Player.action_mode, Globals.camera.get_global_mouse_position()), Input.is_action_pressed("additive_key"))
 
-
-func select_entity(entity: Entity) -> void:
-	if entity in selected : return
-	entity.get_sprite().material.set("shader_parameter/width", 6)
-	selected.append(entity)
-
-func deselect_entity(entity: Entity) -> void:
-	if not entity in selected : return
-	entity.get_sprite().material.set("shader_parameter/width", 0)
-	selected.erase(entity)
-
-
-func deselect_all() -> void:
-	var to_deselect = selected.duplicate()
-	for entity in to_deselect:
-		deselect_entity(entity)
-
-
-func deselect_entities(entities: Array[Entity]):
-	for entity in entities:
-		deselect_entity(entity)
-
-
-func select_entities(entities: Array[Entity], additive: bool = false):
-	
-	if not additive:
-		var to_desel: Array[Entity] = []
-		for entity in selected:
-			if not entity in entities:
-				to_desel.append(entity)
-		deselect_entities(to_desel)
-		print(to_desel)
-	
-	for entity in entities:
-		select_entity(entity)
 
 func _on_entities_selected(entities: Array[Entity]) -> void:
-	select_entities(entities)
+	Player.select_entities(entities, Input.is_action_pressed("additive_key"))
+	#select_entities(entities, Input.is_action_pressed("additive_key"))

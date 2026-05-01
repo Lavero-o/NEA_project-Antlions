@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Entity
 
 const position_procimity_acceptance: float = 10
-const min_velocity_cancelation_threshold: float = 20
+const min_velocity_cancelation_threshold: float = 0
+const shove_strength: float = 200
 
 @export_group('Stats')
 @export var health: float = 60
@@ -14,7 +15,8 @@ const min_velocity_cancelation_threshold: float = 20
 @export var allowed_actions: Array[Enums.actions]
 @export var AI: EntityAI
 
-var friction: float = 10.0
+var collider_radius: float
+var friction: float = 5.0
 
 var moving_to: Vector2
 var is_moving_to_point: bool
@@ -22,23 +24,35 @@ var is_moving_to_point: bool
 var turn_speed: float = 0.1
 var actions: Array[Action] = []
 
+var shape_cast: ShapeCast2D
+
+
+func _ready() -> void:
+	var collision: CollisionShape2D = find_child("CollisionShape2D")
+	collider_radius = collision.shape.radius
+	if not shape_cast:
+		shape_cast = ShapeCast2D.new()
+		shape_cast.shape = collision.shape
+		add_child(shape_cast)
 
 
 func _physics_process(delta: float) -> void:
 	if is_stationary : return
-	if actions.is_empty(): return
 	
-	var action = actions[0]
-	if position.distance_to(action.targeted_position) < position_procimity_acceptance:
-		print("Action completed!")
-		actions.remove_at(0)
-	elif velocity.length() < min_velocity_cancelation_threshold:
-		print("Action canceled...")
-		actions.remove_at(0)
+	if actions.size() > 0:
+		var action = actions[0]
+		if position.distance_to(action.targeted_position) < position_procimity_acceptance:
+			#print("Action completed!")
+			actions.remove_at(0)
+		elif velocity.length() < min_velocity_cancelation_threshold:
+			#print("Action canceled...")
+			actions.remove_at(0)
+		velocity = position.direction_to(action.targeted_position) * speed
 	
-	velocity = position.direction_to(action.targeted_position) * speed
+	velocity = velocity.lerp(Vector2.ZERO, delta*friction)
 	
 	position += velocity * delta
+	#shove_entities(delta)
 	move_and_slide()
 
 
@@ -53,8 +67,11 @@ func _get_move_vector() -> Vector2:
 	if not is_moving_to_point : pass
 	return (moving_to - position).normalized()
 
+
 func complete_logic():
-	print(actions)
+	if actions.size() == 0 : return
+	var _current_action = actions[0]
+
 
 func _calculate_moving(delta: float) -> void:
 	if is_moving_to_point:
@@ -68,11 +85,44 @@ func _calculate_moving(delta: float) -> void:
 		velocity = Vector2.ZERO
 	#Action.ActionParams.new()
 
+
+func shove_entities(delta):
+	shape_cast.target_position = position + velocity*delta
+	var results: Array = shape_cast.collision_result
+	
+	for result in results:
+		if result.collider is Entity and not result.collider.stationary:
+			var distance_to_collider = position.distance_to(result.collider.position)
+			if distance_to_collider >= collider_radius*2: continue
+			
+			var direction_to_collider = position.direction_to(result.collider.position)
+			var intensity = distance_to_collider/(collider_radius*2)
+			
+			result.collider.velocity += direction_to_collider * delta * shove_strength * intensity
+			
+			pass
+	pass
+
+
+func select() -> bool:
+	return Player.select_entity(self)
+
+
+func deselect() -> bool:
+	return Player.deselect_entity(self)
+
+
 func _get_moving_point_vector() -> Vector2:
 	return moving_to - position
 
-func get_sprite() -> Sprite2D:
+
+func _get_sprite() -> Sprite2D:
 	return $Sprite2D
+
+
+func _get_shader() -> ShaderMaterial:
+	return _get_sprite().material
+
 
 func move_to(point: Vector2) -> void:
 	if is_stationary:

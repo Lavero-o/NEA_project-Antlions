@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ctwpb8oknaa82"]
+
+[ext_resource type="Script" uid="uid://brf0344xp0ild" path="res://Scripts/spitter.gd" id="1_2md3j"]
+[ext_resource type="Texture2D" uid="uid://c84i7teusv3o7" path="res://Assets/icon.svg" id="2_bjs01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0robj"]
+radius = 6.0
+
+[node name="Spitter" type="CharacterBody2D" unique_id=910150970]
+script = ExtResource("1_2md3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1381414071]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_bjs01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554092210]
+shape = SubResource("CircleShape2D_0robj")

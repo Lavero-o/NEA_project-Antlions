@@ -1,4 +1,4 @@
-extends  Node
+extends Node
 
 
 var action_mode: Enums.actions = Enums.actions.NONE
@@ -9,51 +9,67 @@ signal entities_selected(entities: Array[Entity])
 signal entities_deselected(entities: Array[Entity])
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_echo() or not event.is_pressed(): return
+	
+	if event.is_action("move_action") : action_mode = Enums.actions.MOVE
+	elif event.is_action("build_action") : action_mode = Enums.actions.BUILD
+	elif event.is_action("attack_action") : action_mode = Enums.actions.ATTACK
+	elif event.is_action("grab_action") : action_mode = Enums.actions.GRAB
+	elif event.is_action("defend_action") : action_mode = Enums.actions.DEFEND
+	print(action_mode)
+
+
 func set_action_mode(new_action_mode: Enums.actions):
 	
 	action_mode = new_action_mode
+
+
+func select_entity(entity: Entity, ignore_signal: bool = false) -> bool:
+	if entity in selected : return false
 	
+	selected.append(entity)
+	
+	if not ignore_signal:
+		entities_selected.emit([entity])
+	return true
+
+
+func deselect_entity(entity: Entity, ignore_signal: bool = false) -> bool:
+	if not entity in selected : return false
+	
+	selected.erase(entity)
+	
+	if not ignore_signal:
+		entities_deselected.emit([entity])
+	return true
 
 
 func deselect_entities(entities: Array[Entity]):
-	
-	var desel_ent: Array[Entity] = []
-	
+	var deselected: Array[Entity] = []
 	for entity in entities:
-		var array_index = selected.find(entity)
-		if array_index == -1 : continue
-		
-		selected.remove_at(selected.find(entity))
-		desel_ent.append(entity)
-	
-	entities_deselected.emit(desel_ent)
-	
+		if deselect_entity(entity, true): 
+			deselected.append(entity)
+	entities_deselected.emit(entities)
 
 
-func deselect_all():
-	
-	entities_deselected.emit(selected)
-	selected = []
-	
-
-
-func select_entities(entities: Array[Entity], additive = false):
+func select_entities(entities: Array[Entity], additive: bool = false):
 	
 	if not additive:
-		var ent_to_desel: Array [Entity]
-		
+		var to_desel: Array[Entity] = []
 		for entity in selected:
-			if entity not in entities:
-				ent_to_desel.append(entity)
-		
-		deselect_entities(ent_to_desel)
+			if not entity in entities:
+				to_desel.append(entity)
+		deselect_entities(to_desel)
 	
-	var sel_ent: Array[Entity] = []
-	
+	var new_entities_selected: Array[Entity] = []
 	for entity in entities:
-		if entity not in selected:
-			sel_ent.append(entity)
-			selected.append(entity)
+		if select_entity(entity, true):
+			new_entities_selected.append(entity)
 	
-	entities_selected.emit(sel_ent)
-	
+	entities_selected.emit(new_entities_selected)
+
+
+func deselect_all() -> void:
+	var to_deselect = selected.duplicate()
+	deselect_entities(to_deselect)

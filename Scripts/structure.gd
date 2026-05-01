@@ -1,8 +1,7 @@
-extends Entity
-class_name Structure
-
+class_name Structure extends Entity
 
 func _ready() -> void:
+	is_stationary = true
 	pass
 
 

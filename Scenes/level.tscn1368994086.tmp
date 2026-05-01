@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://coxs4q4gumdpt" path="res://Scenes/selection_area.tscn" id="9_qxfql"]
 [ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scripts/entity_selection.gd" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c7p1bp5526eom" path="res://Scenes/select_rect.tscn" id="10_hptm8"]
-[ext_resource type="PackedScene" uid="uid://bvf7xn324a2dr" path="res://Scenes/UI/pause_menu.tscn" id="10_oqgf2"]
+[ext_resource type="PackedScene" uid="uid://bvf7xn324a2dr" path="res://Scenes/pause_menu.tscn" id="10_oqgf2"]
 
 [node name="Level" type="Node2D" unique_id=1700748744]
 script = ExtResource("1_qxfql")

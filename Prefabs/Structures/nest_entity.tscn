@@ -90,7 +90,7 @@ size = Vector2(36, 36)
 collision_priority = 0.9
 motion_mode = 1
 script = ExtResource("2_c2qnj")
-stationary = true
+start_fighter_ants = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144752756]
 material = SubResource("ShaderMaterial_kh80k")

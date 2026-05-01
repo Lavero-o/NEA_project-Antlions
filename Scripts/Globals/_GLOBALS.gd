@@ -8,9 +8,6 @@ var world_rect : Rect2 = Rect2(0,0,0,0)
 
 func screen_to_global(position: Vector2):
 	if not camera : return
-	print(position)
-	print(get_viewport().canvas_transform.origin)
-	print(camera.zoom)
 	return (position + get_viewport().canvas_transform.origin*-1) / get_viewport().get_camera_2d().zoom
 
 

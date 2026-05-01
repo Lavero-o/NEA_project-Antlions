@@ -17,3 +17,7 @@ func _init(
 	type = action_type
 	targeted_entity = target_entity
 	targeted_position = target_position
+
+
+func new_move_action(pos: Vector2) -> Action:
+	return Action.new(Enums.actions.MOVE,pos)

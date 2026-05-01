@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://melhnvh528da"]
+
+[ext_resource type="Script" uid="uid://dvomsh684f50m" path="res://berry.gd" id="1_e0atw"]
+
+[sub_resource type="Gradient" id="Gradient_e0atw"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.94647807, 0.19859731, 0.25947347, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ds304"]
+gradient = SubResource("Gradient_e0atw")
+width = 6
+height = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0atw"]
+radius = 2.0
+
+[node name="Berry" type="CharacterBody2D" unique_id=1566772360]
+collision_mask = 0
+script = ExtResource("1_e0atw")
+is_stationary = true
+is_selectable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1833740189]
+texture = SubResource("GradientTexture2D_ds304")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019792308]
+shape = SubResource("CircleShape2D_e0atw")

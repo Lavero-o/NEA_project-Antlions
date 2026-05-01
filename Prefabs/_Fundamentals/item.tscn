@@ -6,4 +6,3 @@
 script = ExtResource("1_vkwsk")
 health = 0.0
 speed = 0.0
-stationary = true
