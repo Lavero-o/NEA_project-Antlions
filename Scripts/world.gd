@@ -19,6 +19,7 @@ var noise_thresholds = {
 
 signal world_ready
 
+var nest_base_node = preload("res://Prefabs/Structures/nest_entity.tscn").instantiate()
 
 @export var entity_node: Node2D
 @export var world_width: int = 250
@@ -26,6 +27,7 @@ signal world_ready
 @export var world_noise: FastNoiseLite
 @export var end_vinette: GradientTexture2D
 @export var world_seed: int = -1
+@export var starting_number_of_ants: int = 5
 
 var noise_image: Image
 var end_gradient: Image
@@ -36,23 +38,26 @@ func _ready() -> void:
 	gen_world()
 	Globals.set_world(self)
 	
-	var nest = spawn_entity(load("res://Prefabs/Structures/nest_entity.tscn"))
+	var nest: Nest = random_spawn_entity(Enums.entity.NEST)
+	
+	for i in starting_number_of_ants:
+		nest._spawn_ant(Enums.entity.ANT)
 	
 	emit_signal('world_ready')
 	
 	%CameraChar.position = nest.position
 	print(get_viewport().get_camera_2d())
 
-func spawn_entity(entity) -> Node:
-	if entity is PackedScene:
-		entity = entity.instantiate()
-	if not entity.get_parent():
-		%Entities.add_child(entity)
+func spawn_entity(entity_type: Enums.entity, entity_position: Vector2) -> Entity:
+	var entity = Globals.new_entity_by_type(entity_type, entity_node)
+	entity.position = entity_position
+	return entity
+
+func random_spawn_entity(entity_type: Enums.entity) -> Node:
 	
 	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
 	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
-	
-	entity.position = pos
+	var entity = spawn_entity(entity_type, pos)
 	return entity
 
 func get_tile_on_noise(noise_val) -> String:

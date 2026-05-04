@@ -18,6 +18,10 @@ var selection_rect_node: ColorRect
 
 
 func _ready() -> void:
+	canvas = get_tree().current_scene.find_child(Globals.canvas_name)
+	if not canvas:
+		canvas = CanvasLayer.new()
+		get_tree().current_scene.add_child.call_deferred(canvas)
 	selection_rect_node = selection_rect_scene.instantiate()
 	selection_area.body_entered.connect(_on_select_area_body_entered)
 	selection_area.body_exited.connect(_on_select_area_body_exited)

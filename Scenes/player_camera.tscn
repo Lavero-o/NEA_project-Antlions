@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cybt7d4fjls5e"]
+
+[ext_resource type="Script" uid="uid://da8p8lunlgpwx" path="res://Scripts/player_cam.gd" id="1_wg711"]
+[ext_resource type="Script" uid="uid://dos051svvodfj" path="res://Scripts/control_node.gd" id="2_o3kss"]
+[ext_resource type="Script" uid="uid://b7r650ylsqej0" path="res://Scripts/entity_control.gd" id="3_vhj40"]
+[ext_resource type="Script" uid="uid://bgqeg1sxuegq8" path="res://Scripts/entity_selection.gd" id="4_ragnj"]
+[ext_resource type="PackedScene" uid="uid://c7p1bp5526eom" path="res://Scenes/select_rect.tscn" id="5_qca1e"]
+[ext_resource type="PackedScene" uid="uid://coxs4q4gumdpt" path="res://Scenes/selection_area.tscn" id="6_716rv"]
+
+[node name="CameraChar" type="Camera2D" unique_id=1361460726]
+script = ExtResource("1_wg711")
+
+[node name="ControlNode" type="Node" parent="." unique_id=751930253 node_paths=PackedStringArray("camera")]
+script = ExtResource("2_o3kss")
+camera = NodePath("..")
+
+[node name="EntityControl" type="Node" parent="." unique_id=315336425]
+script = ExtResource("3_vhj40")
+
+[node name="EntitySelection" type="Node" parent="EntityControl" unique_id=1078342219]
+script = ExtResource("4_ragnj")
+selection_rect_scene = ExtResource("5_qca1e")
+
+[node name="SelectionArea" parent="EntityControl" unique_id=1915225179 instance=ExtResource("6_716rv")]
+position = Vector2(1500, 1500)
+monitorable = false
+
+[connection signal="entities_selected" from="EntityControl/EntitySelection" to="EntityControl" method="_on_entities_selected"]
+[connection signal="body_entered" from="EntityControl/SelectionArea" to="EntityControl/EntitySelection" method="_on_selection_area_body_entered"]
+[connection signal="body_exited" from="EntityControl/SelectionArea" to="EntityControl/EntitySelection" method="_on_selection_area_body_exited"]
+
+[editable path="EntityControl/SelectionArea"]

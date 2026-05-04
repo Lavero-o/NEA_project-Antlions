@@ -11,7 +11,6 @@ enum actions {
 	NONE
 }
 
-
 enum entity {
 	ANT,
 	QUEEN_ANT,
@@ -19,10 +18,16 @@ enum entity {
 	BUILDER_ANT,
 	SKIRMISHER_ANT,
 	
-	HIVE,
-	BUSH,
-	TREE,
-	INCUBATOR,
-	STORAGE,
-	FARM_LAND
+	BERRY,
+	
+	NEST
 }
+
+#enum entity {
+	#HIVE,
+	#BUSH,
+	#TREE,
+	#INCUBATOR,
+	#STORAGE,
+	#FARM_LAND
+#}

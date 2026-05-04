@@ -21,7 +21,7 @@ var friction: float = 5.0
 var moving_to: Vector2
 var is_moving_to_point: bool
 
-var turn_speed: float = 0.1
+var turn_speed: float = 10
 var actions: Array[Action] = []
 
 var shape_cast: ShapeCast2D
@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.lerp(Vector2.ZERO, delta*friction)
 	
 	position += velocity * delta
+	
+	rotation = lerp_angle(rotation, (velocity.angle() - Vector2.LEFT.angle()), turn_speed * delta)
 	#shove_entities(delta)
 	move_and_slide()
 

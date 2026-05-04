@@ -56,10 +56,8 @@ func deselect_entities(entities: Array[Entity]):
 func select_entities(entities: Array[Entity], additive: bool = false):
 	
 	if not additive:
-		var to_desel: Array[Entity] = []
-		for entity in selected:
-			if not entity in entities:
-				to_desel.append(entity)
+		var to_desel: Array[Entity] = entities.filter(func(ant): return not ant in selected)
+		
 		deselect_entities(to_desel)
 	
 	var new_entities_selected: Array[Entity] = []
