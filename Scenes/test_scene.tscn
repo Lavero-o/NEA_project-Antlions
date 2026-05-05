@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://3es72f11p0qq" path="res://Assets/TerrainTiles.png" id="1_50ct6"]
 [ext_resource type="PackedScene" uid="uid://c28nxvnatxwno" path="res://Prefabs/_Fundamentals/ant.tscn" id="2_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://melhnvh528da" path="res://Prefabs/Items/berry.tscn" id="3_ak5v8"]
-[ext_resource type="PackedScene" uid="uid://cybt7d4fjls5e" path="res://Scenes/player_camera.tscn" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://c17pvxitb5fqr" path="res://Scenes/player_camera.tscn" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://l5h3kly3r0gq" path="res://Assets/selection_circle.tscn" id="5_ak5v8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a7ea"]
 texture = ExtResource("1_50ct6")
@@ -31,6 +32,12 @@ tile_set = SubResource("TileSet_8j60k")
 position = Vector2(15, -36)
 
 [node name="Berry" parent="." unique_id=1566772360 instance=ExtResource("3_ak5v8")]
+material = null
 position = Vector2(-13, -36)
+collision_layer = 1
+collision_mask = 0
 
 [node name="CameraChar" parent="." unique_id=1361460726 instance=ExtResource("4_hb2xm")]
+
+[node name="Selection Circle" parent="." unique_id=658951364 instance=ExtResource("5_ak5v8")]
+position = Vector2(-16, -14)

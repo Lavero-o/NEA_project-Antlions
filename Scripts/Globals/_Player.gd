@@ -8,6 +8,11 @@ var team_id: int
 signal entities_selected(entities: Array[Entity])
 signal entities_deselected(entities: Array[Entity])
 
+func _ready() -> void:
+	Globals.game_ended.connect(_on_game_started)
+
+func _on_game_started() -> void:
+	selected.clear()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed(): return
@@ -56,8 +61,8 @@ func deselect_entities(entities: Array[Entity]):
 func select_entities(entities: Array[Entity], additive: bool = false):
 	
 	if not additive:
-		var to_desel: Array[Entity] = entities.filter(func(ant): return not ant in selected)
-		
+		var to_desel: Array[Entity] = selected.filter(func(ant): return not ant in entities)
+		print(to_desel)
 		deselect_entities(to_desel)
 	
 	var new_entities_selected: Array[Entity] = []

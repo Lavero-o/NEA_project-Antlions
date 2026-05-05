@@ -13,4 +13,5 @@ func _on_save_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_exit_button_pressed() -> void:
+	Globals.game_ended.emit()
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")

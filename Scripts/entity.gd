@@ -15,6 +15,7 @@ const shove_strength: float = 200
 @export var allowed_actions: Array[Enums.actions]
 @export var AI: EntityAI
 
+var team_number: int = -1
 var collider_radius: float
 var friction: float = 5.0
 

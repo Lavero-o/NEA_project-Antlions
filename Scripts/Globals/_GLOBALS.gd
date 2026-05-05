@@ -1,12 +1,16 @@
 extends Node
 
 
-var entity_reference: Dictionary[Enums.entity, Entity] = {
-		Enums.entity.ANT : preload("res://Prefabs/_Fundamentals/ant.tscn").instantiate(),
-		Enums.entity.BERRY : preload("res://Prefabs/Items/berry.tscn").instantiate(),
-		Enums.entity.NEST : preload("res://Prefabs/Structures/nest_entity.tscn").instantiate(),
-}
+signal game_started
+signal game_ended
+signal game_loaded
 
+
+var entity_reference: Dictionary[Enums.entity, PackedScene] = {
+		Enums.entity.ANT : preload("res://Prefabs/_Fundamentals/ant.tscn"),
+		Enums.entity.BERRY : preload("res://Prefabs/Items/berry.tscn"),
+		Enums.entity.NEST : preload("res://Prefabs/Structures/nest_entity.tscn"),
+}
 
 var camera : Camera2D
 var world : World
@@ -17,8 +21,6 @@ var select_shader: Shader = preload("res://Assets/main.gdshader")
 
 func _ready() -> void:
 	pass
-
-
 
 func screen_to_global(position: Vector2):
 	if not camera : return
@@ -31,6 +33,8 @@ func get_camera():
 
 func set_camera(new_camera):
 	camera = new_camera
+	if world:
+		game_loaded.emit()
 
 
 func get_world_rect():
@@ -47,12 +51,12 @@ func set_world(new_world: World):
 	
 	world_rect = Rect2(world.get_used_rect())
 	world_rect.size *= world.scale.x
+	if camera:
+		game_loaded.emit()
 
 
-func new_entity_by_type(type: Enums.entity, parent = null) -> Entity:
-	var entity : Entity = entity_reference[type].duplicate()
-	entity.material = ShaderMaterial.new()
-	entity.material.shader = select_shader.duplicate_deep()
-	if parent is Node:
-		parent.add_child(entity)
+func new_entity_by_type(type: Enums.entity, deep = false) -> Entity:
+	var entity_base: PackedScene = entity_reference[type]
+	var entity : Entity = entity_base.duplicate_deep().instantiate()
+	if world: world.entity_node.add_child(entity)
 	return entity

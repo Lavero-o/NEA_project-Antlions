@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://l5h3kly3r0gq"]
+
+[sub_resource type="Gradient" id="Gradient_yecu1"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yb78r"]
+gradient = SubResource("Gradient_yecu1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5os0h"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_mb66s"]
+mesh = SubResource("SphereMesh_5os0h")
+base_texture = SubResource("GradientTexture2D_yb78r")
+image_size = Vector2(1, 1)
+
+[node name="Selection Circle" type="Sprite2D" unique_id=658951364]
+scale = Vector2(40, 40)
+texture = SubResource("MeshTexture_mb66s")
+centered = false
