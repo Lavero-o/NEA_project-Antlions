@@ -18,7 +18,6 @@ radius = 2.0
 
 [node name="Berry" type="CharacterBody2D" unique_id=1566772360]
 material = SubResource("ShaderMaterial_664jq")
-collision_layer = 0
 script = ExtResource("1_e0atw")
 is_stationary = true
 is_selectable = false

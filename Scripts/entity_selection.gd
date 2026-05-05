@@ -98,9 +98,10 @@ func get_entities_witnin_select() -> Array[Entity]:
 	await scene_tree.physics_frame
 	
 	var found_entities = selection_area.get_overlapping_bodies()
-	
 	for entity in found_entities:
-		if entity is Entity:
+		print(entity is Entity)
+		if entity is Entity and entity.is_selectable:
+			print(entity.name)
 			entities.append(entity)
 	#print(entities)
 	#print(selection_area.position)

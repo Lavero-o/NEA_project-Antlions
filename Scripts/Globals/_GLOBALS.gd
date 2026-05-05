@@ -17,9 +17,12 @@ var world : World
 var world_rect : Rect2 = Rect2(0,0,0,0)
 var canvas_name : String = "CanvasLayer"
 var select_shader: Shader = preload("res://Assets/main.gdshader")
+var shader_material: ShaderMaterial
 
 
 func _ready() -> void:
+	shader_material = ShaderMaterial.new()
+	shader_material.shader = select_shader
 	pass
 
 func screen_to_global(position: Vector2):
@@ -58,9 +61,7 @@ func set_world(new_world: World):
 func new_entity_by_type(type: Enums.entity) -> Entity:
 	var entity_scene: PackedScene = entity_reference[type]
 	var entity: Entity = entity_scene.instantiate()
-	var shader_material = ShaderMaterial.new()
-	shader_material.shader = select_shader.duplicate(true)
-	entity._set_material(shader_material)
+	entity._set_material(shader_material.duplicate())
 	if world: world.entity_node.add_child(entity)
 	
 	return entity
