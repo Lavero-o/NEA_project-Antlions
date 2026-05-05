@@ -55,8 +55,12 @@ func set_world(new_world: World):
 		game_loaded.emit()
 
 
-func new_entity_by_type(type: Enums.entity, deep = false) -> Entity:
-	var entity_base: PackedScene = entity_reference[type]
-	var entity : Entity = entity_base.duplicate_deep().instantiate()
+func new_entity_by_type(type: Enums.entity) -> Entity:
+	var entity_scene: PackedScene = entity_reference[type]
+	var entity: Entity = entity_scene.instantiate()
+	var shader_material = ShaderMaterial.new()
+	shader_material.shader = select_shader.duplicate(true)
+	entity._set_material(shader_material)
 	if world: world.entity_node.add_child(entity)
+	
 	return entity

@@ -49,7 +49,7 @@ func _ready() -> void:
 	print(get_viewport().get_camera_2d())
 
 func spawn_entity(entity_type: Enums.entity, entity_position: Vector2) -> Entity:
-	var entity = Globals.new_entity_by_type(entity_type, entity_node)
+	var entity = Globals.new_entity_by_type(entity_type)
 	entity.position = entity_position
 	return entity
 

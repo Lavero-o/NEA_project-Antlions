@@ -12,7 +12,7 @@ func _ready() -> void:
 	Globals.game_ended.connect(_on_game_started)
 
 func _on_game_started() -> void:
-	selected.clear()
+	deselect_all()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed(): return

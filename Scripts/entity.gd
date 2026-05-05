@@ -126,6 +126,9 @@ func _get_sprite() -> Sprite2D:
 func _get_shader() -> ShaderMaterial:
 	return _get_sprite().material
 
+func _set_material(new_material: Material) -> void:
+	_get_sprite().material = new_material
+
 
 func move_to(point: Vector2) -> void:
 	if is_stationary:
