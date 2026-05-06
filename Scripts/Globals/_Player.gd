@@ -1,7 +1,7 @@
 extends Node
 
 
-var action_mode: Enums.actions = Enums.actions.NONE
+var action_mode: Enums.actions = Enums.actions.MOVE
 var selected: Array[Entity]
 var team_id: int
 

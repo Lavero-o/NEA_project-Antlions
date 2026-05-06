@@ -102,9 +102,6 @@ func shove_entities(delta):
 			var intensity = distance_to_collider/(collider_radius*2)
 			
 			result.collider.velocity += direction_to_collider * delta * shove_strength * intensity
-			
-			pass
-	pass
 
 
 func select() -> bool:
@@ -131,8 +128,7 @@ func _set_material(new_material: Material) -> void:
 
 
 func move_to(point: Vector2) -> void:
-	if is_stationary:
-		return
+	if is_stationary : return
 	is_moving_to_point = true
 	moving_to = point
 	#print("started moving towards:",moving_to)

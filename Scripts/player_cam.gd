@@ -1,6 +1,4 @@
 extends Camera2D
-
-
 const BASE_SPEED: float = 500.0
 const BASE_ACCEL: float = 1000.0
 

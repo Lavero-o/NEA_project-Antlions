@@ -16,7 +16,7 @@ var camera : Camera2D
 var world : World
 var world_rect : Rect2 = Rect2(0,0,0,0)
 var canvas_name : String = "CanvasLayer"
-var select_shader: Shader = preload("res://Assets/main.gdshader")
+var select_shader: Shader = preload("res://Assets/select_shader.gdshader")
 var shader_material: ShaderMaterial
 
 
