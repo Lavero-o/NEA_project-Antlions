@@ -28,6 +28,7 @@ var nest_base_node = preload("res://Prefabs/Structures/nest_entity.tscn").instan
 @export var end_vinette: GradientTexture2D
 @export var world_seed: int = -1
 @export var starting_number_of_ants: int = 5
+@export var test: Resource
 
 var noise_image: Image
 var end_gradient: Image

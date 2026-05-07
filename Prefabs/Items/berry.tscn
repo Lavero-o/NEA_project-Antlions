@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://melhnvh528da"]
 
 [ext_resource type="Script" uid="uid://dvomsh684f50m" path="res://berry.gd" id="1_e0atw"]
+[ext_resource type="Script" uid="uid://bpf4affjr3p36" path="res://Scripts/Resources/_EntityStats.gd" id="2_dv4pr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_664jq"]
+
+[sub_resource type="Resource" id="Resource_dv4pr"]
+script = ExtResource("2_dv4pr")
+metadata/_custom_type_script = "uid://bpf4affjr3p36"
 
 [sub_resource type="Gradient" id="Gradient_e0atw"]
 offsets = PackedFloat32Array(1)
@@ -14,11 +19,13 @@ width = 6
 height = 6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0atw"]
-radius = 2.0
+radius = 5.0990195
 
 [node name="Berry" type="CharacterBody2D" unique_id=1566772360]
 material = SubResource("ShaderMaterial_664jq")
+collision_layer = 2
 script = ExtResource("1_e0atw")
+stats = SubResource("Resource_dv4pr")
 is_stationary = true
 is_selectable = false
 

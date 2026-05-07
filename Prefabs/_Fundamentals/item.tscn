@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://byw0f8d83562g"]
 
 [ext_resource type="Script" uid="uid://docr6g41ttidb" path="res://item.gd" id="1_vkwsk"]
+[ext_resource type="Script" uid="uid://bpf4affjr3p36" path="res://Scripts/Resources/_EntityStats.gd" id="2_srnl7"]
+
+[sub_resource type="Resource" id="Resource_dximg"]
+script = ExtResource("2_srnl7")
+metadata/_custom_type_script = "uid://bpf4affjr3p36"
 
 [node name="Item" type="StaticBody2D" unique_id=233058587]
 script = ExtResource("1_vkwsk")
-health = 0.0
-speed = 0.0
+stats = SubResource("Resource_dximg")

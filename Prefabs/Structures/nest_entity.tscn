@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://js6u6r2008d3"]
 
 [ext_resource type="Script" uid="uid://xssuymvggqqh" path="res://Scripts/nest_entity.gd" id="2_c2qnj"]
+[ext_resource type="Script" uid="uid://bpf4affjr3p36" path="res://Scripts/Resources/_EntityStats.gd" id="2_kh80k"]
+
+[sub_resource type="Resource" id="Resource_jjsha"]
+script = ExtResource("2_kh80k")
+metadata/_custom_type_script = "uid://bpf4affjr3p36"
 
 [sub_resource type="Shader" id="Shader_uy56t"]
 code = "shader_type canvas_item;
@@ -90,6 +95,7 @@ size = Vector2(36, 36)
 collision_priority = 0.9
 motion_mode = 1
 script = ExtResource("2_c2qnj")
+stats = SubResource("Resource_jjsha")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144752756]
 material = SubResource("ShaderMaterial_kh80k")

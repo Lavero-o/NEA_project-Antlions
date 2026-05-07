@@ -6,6 +6,11 @@
 [ext_resource type="Script" uid="uid://dhyav0s8w0teg" path="res://Scripts/canvas_layer.gd" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://bvf7xn324a2dr" path="res://Scenes/UI/pause_menu.tscn" id="10_oqgf2"]
 
+[sub_resource type="GDScript" id="GDScript_732bd"]
+
+[sub_resource type="Resource" id="Resource_wqkje"]
+script = SubResource("GDScript_732bd")
+
 [node name="Level" type="Node2D" unique_id=1700748744]
 script = ExtResource("1_wqkje")
 
@@ -14,6 +19,7 @@ unique_name_in_owner = true
 scale = Vector2(12, 12)
 entity_node = NodePath("../Entities")
 starting_number_of_ants = 60
+test = SubResource("Resource_wqkje")
 
 [node name="Entities" type="Node2D" parent="." unique_id=1014762199]
 unique_name_in_owner = true

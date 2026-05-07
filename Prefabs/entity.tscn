@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://boye7g5fxn4jq"]
 
-[ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://entity.gd" id="1_4cnbd"]
+[ext_resource type="Script" uid="uid://y3lbra4lflh0" path="res://Scripts/entity.gd" id="1_4cnbd"]
 
-[node name="Entity" type="CharacterBody2D"]
+[node name="Entity" type="CharacterBody2D" unique_id=1368135519]
 script = ExtResource("1_4cnbd")
+is_stationary = null
+is_selectable = null
+allowed_actions = null
