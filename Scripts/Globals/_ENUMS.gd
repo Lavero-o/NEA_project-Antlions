@@ -23,6 +23,12 @@ enum entity {
 	NEST
 }
 
+enum players {
+	AI,
+	CLIENT,
+	SIDE
+}
+
 #enum entity {
 	#HIVE,
 	#BUSH,

@@ -9,6 +9,15 @@ extends Node2D
 var select_shader: Shader = preload("res://Assets/select_shader.gdshader")
 var teams: Array[Team] = []
 
+var client_player: Player
+
+func load_game(players: Array[LobbyPlayerInfo], number_of_teams: int) -> void:
+	for team_ID in number_of_teams:
+		teams.append(Team.new(team_ID+1, Team.get_players_for_team(team_ID, players)))
+
+func spawn_entity(entity_type: Enums.entity, team_ID: int = -1, player_ID: int = -1, arguments: Dictionary[String, Variant] = {}) -> void:
+	
+	pass
 
 func _ready() -> void:
 	Globals.game_loaded.connect(_game_loaded)

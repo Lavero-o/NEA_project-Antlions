@@ -1,20 +1,21 @@
 class_name Team extends Resource
 
+
+var players: Array
+
+
 var is_playing: bool
-var nest: Nest
-var entities: Array[Entity]
-var total_food: int
 var ID: int
 
-func _init(_ID = -1, _nest = null, _entities = null) -> void:
+func _init(_ID = -1, _players: Array[LobbyPlayerInfo] = []) -> void:
 	ID = _ID
-	if _nest:
-		nest = _nest
-	if _entities:
-		entities = _entities
+	for player in _players:
+		players.append(Player.new)
 
-func update_food_amount() -> void:
-	total_food = 0
-	for entity in entities:
-		if entity.stats.container:
-			total_food += entity.stats.container.food
+
+static func get_players_for_team(team_ID: int, _players):
+	var team_players: Array[LobbyPlayerInfo]
+	for player in _players:
+		if player.team_ID == team_ID:
+			team_players.append(player)
+	return team_players

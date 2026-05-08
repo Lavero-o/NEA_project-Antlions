@@ -21,7 +21,6 @@ config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-Player="*uid://cradjgftpvawb"
 Globals="*uid://o667dtu7ndu4"
 Game="*uid://kxa45brusnbw"
 

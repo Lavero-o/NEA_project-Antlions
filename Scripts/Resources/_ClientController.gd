@@ -1,4 +1,4 @@
-extends Node
+class_name ClientController extends Resource
 
 
 var action_mode: Enums.actions = Enums.actions.MOVE
