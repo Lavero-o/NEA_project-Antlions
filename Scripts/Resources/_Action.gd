@@ -35,6 +35,6 @@ func check_completion() -> bool:
 			if owner.position.distance_to(targeted_position) < owner.position_procimity_acceptance:
 				completed = true
 		Enums.actions.GRAB:
-			if not targeted_entity or targeted_entity.is_stored:
+			if not targeted_entity or not targeted_entity is Item or targeted_entity.is_held or owner.item_held:
 				completed = true
 	return completed

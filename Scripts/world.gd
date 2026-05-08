@@ -54,6 +54,9 @@ func spawn_entity(entity_type: Enums.entity, entity_position: Vector2) -> Entity
 	entity.position = entity_position
 	return entity
 
+func spawn_berry(min_amount,max_amount):
+	random_spawn_entity(Enums.entity.BERRY).amount = randi_range(min_amount,max_amount)
+
 func random_spawn_entity(entity_type: Enums.entity) -> Node:
 	
 	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()

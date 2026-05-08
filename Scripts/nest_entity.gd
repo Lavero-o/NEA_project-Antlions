@@ -8,7 +8,7 @@ class_name Nest
 @export var inv_cap: int = 20
 
 #temporary
-var ant_base_node = preload("res://Prefabs/_Fundamentals/ant.tscn").instantiate()
+#var ant_base_node = preload("res://Prefabs/_Fundamentals/ant.tscn")
 
 var worker_ant_scene: PackedScene
 var scout_ant_scene: PackedScene

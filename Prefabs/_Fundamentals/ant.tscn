@@ -4,12 +4,11 @@
 [ext_resource type="Script" uid="uid://b05iumtrbyaaa" path="res://Scripts/Resources/_EntityAI.gd" id="2_12oew"]
 [ext_resource type="Script" uid="uid://bpf4affjr3p36" path="res://Scripts/Resources/_EntityStats.gd" id="2_mh46n"]
 [ext_resource type="Script" uid="uid://btqkpvt75jegw" path="res://Scripts/ant.gd" id="2_qcliy"]
-[ext_resource type="Shader" uid="uid://dkvvfvxbqmy6s" path="res://Assets/select_shader.gdshader" id="4_evsol"]
+[ext_resource type="Shader" path="res://Assets/select_shader.gdshader" id="4_evsol"]
 
 [sub_resource type="Resource" id="Resource_evsol"]
 script = ExtResource("2_mh46n")
 speed = 100.0
-metadata/_custom_type_script = "uid://bpf4affjr3p36"
 
 [sub_resource type="Resource" id="Resource_mh46n"]
 script = ExtResource("2_12oew")
@@ -41,5 +40,3 @@ metadata/selected = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1279372511]
 shape = SubResource("CircleShape2D_0p6rw")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1197224476]

@@ -22,7 +22,6 @@ var is_moving_to_point: bool
 var is_stored: bool
 var turn_speed: float = 10
 var actions: Array[Action] = []
-var items_held: Array[Item] = []
 
 
 func add_action(action: Action, additive: bool = false) -> void:
@@ -89,8 +88,13 @@ func _apply_friction(delta: float) -> void:
 func _apply_rotation(delta: float) -> void:
 	rotation = lerp_angle(rotation, (velocity.angle() - Vector2.LEFT.angle()), turn_speed * delta)
 
-func _shove_entities(_delta: float):
-	pass
+func _shove_entities(_delta: float) -> void:
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is Entity and not collider.is_stationary:
+			var new_velocity = velocity.project(collision.get_normal())
+			collider.velocity = new_velocity
 
 func _get_sprite() -> Sprite2D:
 	return $Sprite2D

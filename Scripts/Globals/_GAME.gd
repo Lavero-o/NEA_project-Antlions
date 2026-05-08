@@ -17,4 +17,4 @@ func _game_loaded() -> void:
 	for num in number_of_teams:
 		teams.append(Team.new(num+1))
 	for i in food_amount:
-		Globals.world.random_spawn_entity(Enums.entity.BERRY)
+		Globals.world.spawn_berry(5,10)
