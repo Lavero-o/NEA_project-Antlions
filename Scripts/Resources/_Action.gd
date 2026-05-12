@@ -2,7 +2,7 @@ class_name Action extends Resource
 
 
 var owner: Entity
-var type: Enums.actions
+var type: Enums.action
 var targeted_entity: Entity
 var targeted_position: Vector2
 var in_progress: bool = false
@@ -10,7 +10,7 @@ var in_progress: bool = false
 
 
 func _init(
-	action_type: Enums.actions, 
+	action_type: Enums.action, 
 	target_position = null, 
 	target_entity = null,
 	action_owner: Entity = null
@@ -23,7 +23,7 @@ func _init(
 
 
 func new_move_action(pos: Vector2) -> Action:
-	return Action.new(Enums.actions.MOVE,pos)
+	return Action.new(Enums.action.MOVE,pos)
 
 
 func check_completion() -> bool:
@@ -31,10 +31,10 @@ func check_completion() -> bool:
 	var completed = false
 	
 	match type:
-		Enums.actions.MOVE:
+		Enums.action.MOVE:
 			if owner.position.distance_to(targeted_position) < owner.position_procimity_acceptance:
 				completed = true
-		Enums.actions.GRAB:
+		Enums.action.GRAB:
 			if not targeted_entity or targeted_entity.is_stored:
 				completed = true
 	return completed

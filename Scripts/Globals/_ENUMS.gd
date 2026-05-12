@@ -1,7 +1,7 @@
 class_name Enums
 
 
-enum actions {
+enum action {
 	MOVE,
 	GRAB,
 	ATTACK,
@@ -23,10 +23,11 @@ enum entity {
 	NEST
 }
 
-enum players {
+enum controller {
 	AI,
 	CLIENT,
-	SIDE
+	SIDE,
+	NONE
 }
 
 #enum entity {

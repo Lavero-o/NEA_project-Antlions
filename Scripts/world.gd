@@ -37,29 +37,33 @@ var used_rect: Rect2
 
 func _ready() -> void:
 	gen_world()
-	Globals.set_world(self)
-	
-	var nest: Nest = random_spawn_entity(Enums.entity.NEST)
-	
-	for i in starting_number_of_ants:
-		nest._spawn_ant(Enums.entity.ANT)
-	
+	#Globals.set_world(self)
+	#
+	#var nest: Nest = random_spawn_entity(Enums.entity.NEST)
+	#
+	#for i in starting_number_of_ants:
+		#nest._spawn_ant(Enums.entity.ANT)
+	#
 	emit_signal('world_ready')
-	
-	%CameraChar.position = nest.position
-	print(get_viewport().get_camera_2d())
+	#
+	#%CameraChar.position = nest.position
+	#print(get_viewport().get_camera_2d())
 
 func spawn_entity(entity_type: Enums.entity, entity_position: Vector2) -> Entity:
 	var entity = Globals.new_entity_by_type(entity_type)
 	entity.position = entity_position
 	return entity
 
-func random_spawn_entity(entity_type: Enums.entity) -> Node:
-	
+func random_spawn_entity(entity_type: Enums.entity) -> Entity:
 	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
 	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
 	var entity = spawn_entity(entity_type, pos)
 	return entity
+
+func get_random_valid_pos() -> Vector2:
+	var cell_pos = get_used_cells_by_id(0,Vector2i(1,0)).pick_random()
+	var pos = (Vector2(cell_pos) + (Vector2(tile_set.tile_size)/2)) * scale
+	return pos
 
 func get_tile_on_noise(noise_val) -> String:
 	var tile_to_return = ''
@@ -97,6 +101,11 @@ func gen_world(_seed = -1) -> void:
 
 func is_land(_cell_pos: Vector2):
 	pass
+
+func get_world_rect() -> Rect2:
+	var world_rect = Rect2(get_used_rect())
+	world_rect.size *= scale.x
+	return world_rect
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

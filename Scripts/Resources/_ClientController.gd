@@ -1,33 +1,36 @@
-class_name ClientController extends Resource
+class_name ClientController extends Controller
 
-
-var action_mode: Enums.actions = Enums.actions.MOVE
+var action_mode: Enums.action = Enums.action.MOVE
 var selected: Array[Entity]
 var team_id: int
+var selector: ClientSelector
 
 signal entities_selected(entities: Array[Entity])
 signal entities_deselected(entities: Array[Entity])
 
-func _ready() -> void:
-	Globals.game_ended.connect(_on_game_started)
 
-func _on_game_started() -> void:
-	deselect_all()
+func _init():
+	ClientPlayer.add_client_controller(self)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed(): return
 	
-	if event.is_action("move_action") : action_mode = Enums.actions.MOVE
-	elif event.is_action("build_action") : action_mode = Enums.actions.BUILD
-	elif event.is_action("attack_action") : action_mode = Enums.actions.ATTACK
-	elif event.is_action("grab_action") : action_mode = Enums.actions.GRAB
-	elif event.is_action("defend_action") : action_mode = Enums.actions.DEFEND
-	print(action_mode)
-
-
-func set_action_mode(new_action_mode: Enums.actions):
+	var new_action_mode: Enums.action
+	if event.is_action("move_action") : new_action_mode = Enums.action.MOVE
+	elif event.is_action("grab_action") : new_action_mode = Enums.action.GRAB
+	elif event.is_action("attack_action") : new_action_mode = Enums.action.ATTACK
+	elif event.is_action("build_action") : new_action_mode = Enums.action.BUILD
+	elif event.is_action("defend_action") : new_action_mode = Enums.action.DEFEND
+	if new_action_mode:
+		print(set_action_mode(new_action_mode)) #print for input feedback
 	
+	
+
+
+func set_action_mode(new_action_mode: Enums.action) -> Enums.action:
 	action_mode = new_action_mode
+	return action_mode
 
 
 func select_entity(entity: Entity, ignore_signal: bool = false) -> bool:
@@ -59,7 +62,6 @@ func deselect_entities(entities: Array[Entity]):
 
 
 func select_entities(entities: Array[Entity], additive: bool = false):
-	
 	if not additive:
 		var to_desel: Array[Entity] = selected.filter(func(ant): return not ant in entities)
 		print(to_desel)

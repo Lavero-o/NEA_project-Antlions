@@ -1,10 +1,10 @@
 extends Node
 
-
 signal game_started
 signal game_ended
 signal game_loaded
 
+@export var team_colors: GradientTexture1D
 
 var entity_reference: Dictionary[Enums.entity, PackedScene] = {
 		Enums.entity.ANT : preload("res://Prefabs/_Fundamentals/ant.tscn"),
@@ -19,11 +19,19 @@ var canvas_name : String = "CanvasLayer"
 var select_shader: Shader = preload("res://Assets/select_shader.gdshader")
 var shader_material: ShaderMaterial
 
+# for testing purposes this array is not empty
+var team_info_array: Array[LobbyTeamInfo] = [
+	LobbyTeamInfo.new([LobbyPlayerInfo.new(Enums.controller.CLIENT)]),
+	LobbyTeamInfo.new([LobbyPlayerInfo.new(Enums.controller.AI)]),
+	LobbyTeamInfo.new([LobbyPlayerInfo.new(Enums.controller.AI)]),
+	LobbyTeamInfo.new([LobbyPlayerInfo.new(Enums.controller.AI)]),
+	LobbyTeamInfo.new([LobbyPlayerInfo.new(Enums.controller.AI)])
+]
+
 
 func _ready() -> void:
 	shader_material = ShaderMaterial.new()
 	shader_material.shader = select_shader
-	pass
 
 func screen_to_global(position: Vector2):
 	if not camera : return
@@ -58,10 +66,13 @@ func set_world(new_world: World):
 		game_loaded.emit()
 
 
-func new_entity_by_type(type: Enums.entity) -> Entity:
-	var entity_scene: PackedScene = entity_reference[type]
-	var entity: Entity = entity_scene.instantiate()
-	entity._set_material(shader_material.duplicate())
-	if world: world.entity_node.add_child(entity)
-	
-	return entity
+#func new_entity_by_type(type: Enums.entity) -> Entity:
+	#var entity_scene: PackedScene = entity_reference[type]
+	#var entity: Entity = entity_scene.instantiate()
+	#entity._set_material(shader_material.duplicate())
+	#if world: world.entity_node.add_child(entity)
+	#
+	#return entity
+
+func get_team_info_array() -> Array[LobbyTeamInfo]:
+	return team_info_array
