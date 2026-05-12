@@ -20,13 +20,21 @@ var ants: Array
 var food: int
 
 
-func _spawn_ant(type: Enums.entity):
+func _entity_ready() -> void:
+	#var number_of_ants: int = 5
+	#for i in number_of_ants:
+		#spawn_ant(Enums.entity.ANT)
+	pass
+
+func spawn_ant(type: Enums.entity):
 	
 	var min_range = 35
 	var max_range = 50
 	
 	var ant_position = Vector2.UP.rotated(randf()*2*PI) * randf_range(min_range,max_range)
-	Globals.world.spawn_entity(type, position + ant_position)
+	print(player_id)
+	var ant = Game.spawn_entity(type, Game.get_player_by_id(player_id))
+	ant.position = ant_position + position
 
 
 func _process(_delta: float) -> void:

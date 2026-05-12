@@ -4,6 +4,3 @@
 
 [node name="Entity" type="CharacterBody2D" unique_id=1368135519]
 script = ExtResource("1_4cnbd")
-is_stationary = null
-is_selectable = null
-allowed_actions = null

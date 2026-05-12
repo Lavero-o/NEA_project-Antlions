@@ -1,6 +1,7 @@
 class_name Structure extends Entity
 
 func _ready() -> void:
+	super._ready()
 	is_stationary = true
 	pass
 

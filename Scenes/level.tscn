@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://dbvfqpdbm38v2"]
 
 [ext_resource type="PackedScene" uid="uid://ciyumyfbtch8m" path="res://Scenes/world.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://kxa45brusnbw" path="res://Scripts/Globals/_GAME.gd" id="1_wqkje"]
+[ext_resource type="Script" uid="uid://dvyjle1oidulh" path="res://Scripts/level.gd" id="1_wqkje"]
 [ext_resource type="PackedScene" uid="uid://c17pvxitb5fqr" path="res://Scenes/player_camera.tscn" id="3_wqkje"]
 [ext_resource type="Script" uid="uid://dhyav0s8w0teg" path="res://Scripts/canvas_layer.gd" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://bvf7xn324a2dr" path="res://Scenes/UI/pause_menu.tscn" id="10_oqgf2"]
+
+[sub_resource type="Gradient" id="Gradient_wqkje"]
+offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+colors = PackedColorArray(0.9999185, 0.2979374, 0.3506329, 1, 0.9494392, 0.9911141, 1.540184e-06, 1, 0.18677682, 0.99999994, 0.28788024, 1, 0, 0.9275711, 0.85056806, 1, 0.20278317, 0.37621194, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0f350"]
+gradient = SubResource("Gradient_wqkje")
 
 [sub_resource type="GDScript" id="GDScript_732bd"]
 
@@ -13,6 +20,7 @@ script = SubResource("GDScript_732bd")
 
 [node name="Level" type="Node2D" unique_id=1700748744]
 script = ExtResource("1_wqkje")
+team_colors = SubResource("GradientTexture1D_0f350")
 
 [node name="World" parent="." unique_id=1574510773 node_paths=PackedStringArray("entity_node") instance=ExtResource("1_jjgbg")]
 unique_name_in_owner = true

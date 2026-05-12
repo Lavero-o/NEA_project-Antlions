@@ -1,6 +1,6 @@
 class_name EntityAI extends Resource
 
-@export var allowed_actions: Array[Enums.actions]
+@export var allowed_actions: Array[Enums.action]
 var queued_actions: Array[Action] = []
 var completing_action: bool = false
 
