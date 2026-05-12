@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcgmdcajevk8j"]
 
 [ext_resource type="StyleBox" uid="uid://sl3pf6sx1rnc" path="res://Assets/game_ui_style_box.tres" id="1_3fiko"]
+[ext_resource type="Script" uid="uid://b3riy07q0c1cj" path="res://Scenes/UI/game_ui.gd" id="1_vo2tu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vo2tu"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vo2tu")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2073377951]
 layout_mode = 1

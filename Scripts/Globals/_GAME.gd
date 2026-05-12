@@ -6,7 +6,7 @@ extends Node2D
 @export var food_amount: int = 50
 @export var starting_number_of_ants: int = 5
 
-var select_shader: Shader = preload("res://Assets/select_shader.gdshader")
+var select_shader: Shader = preload("uid://dkvvfvxbqmy6s")
 var teams: Array[Team] = []
 
 

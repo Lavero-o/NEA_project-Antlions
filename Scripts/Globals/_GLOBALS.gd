@@ -7,16 +7,16 @@ signal game_loaded
 
 
 var entity_reference: Dictionary[Enums.entity, PackedScene] = {
-		Enums.entity.ANT : preload("res://Prefabs/_Fundamentals/ant.tscn"),
-		Enums.entity.BERRY : preload("res://Prefabs/Items/berry.tscn"),
-		Enums.entity.NEST : preload("res://Prefabs/Structures/nest_entity.tscn"),
+		Enums.entity.ANT : preload("uid://c28nxvnatxwno"),
+		Enums.entity.BERRY : preload("uid://melhnvh528da"),
+		Enums.entity.NEST : preload("uid://js6u6r2008d3"),
 }
 
 var camera : Camera2D
 var world : World
 var world_rect : Rect2 = Rect2(0,0,0,0)
 var canvas_name : String = "CanvasLayer"
-var select_shader: Shader = preload("res://Assets/select_shader.gdshader")
+var select_shader: Shader = preload("uid://dkvvfvxbqmy6s")
 var shader_material: ShaderMaterial
 
 

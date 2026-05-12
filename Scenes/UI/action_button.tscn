@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://qs771538yr28"]
+
+[ext_resource type="Script" uid="uid://bmo16pohpt8ip" path="res://action_button.gd" id="1_fpu3n"]
+
+[node name="Button" type="Button" unique_id=1723939639]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_fpu3n")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1746597063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 4
+stretch_mode = 5
